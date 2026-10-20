@@ -93,7 +93,14 @@ js/app.js             router, delegasi event, validasi formulir
 js/rules.test.js      35 unit test aturan
 docs/schema.sql       usulan skema PostgreSQL
 docs/privasi.md       privasi, consent, batas kepatuhan
+docs/audit/           laporan audit 2026-10-20, tindakan manual, skrip verifikasi (verify/)
 ```
+
+## Keamanan prototipe
+
+- `index.html` dan `tests.html` memasang Content-Security-Policy lewat `<meta>`: skrip hanya dari file lokal, tanpa skrip inline, tanpa koneksi jaringan selain Google Fonts. Jangan menambah `<script>` inline atau atribut `onclick`; pakai delegasi event di `js/app.js`.
+- Semua teks dinamis dirender lewat helper `e()` di `js/views.js`. Pakai helper itu untuk setiap nilai baru, termasuk di atribut.
+- Data disimpan **tanpa enkripsi** di `localStorage`, dan peran hanya simulasi. Gunakan hanya data fiktif. Lihat `docs/audit/MANUAL_ACTIONS.md`.
 
 ## Asumsi dan penyimpangan dari brief
 
