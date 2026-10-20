@@ -1,5 +1,10 @@
 <div align="center">
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.svg" />
+  <img src="docs/logo.svg" alt="Logo RencanaMampu" width="96" height="96" />
+</picture>
+
 # RencanaMampu
 
 **Rencana pulang yang benar-benar sanggup dijalankan keluarga.**
