@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Uji aturan — RencanaMampu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="11" fill="currentColor"/><path d="M9 27c0-6.6 4.9-11.8 11-11.8S31 20.4 31 27" stroke="#F2F7F3" stroke-width="2.6" stroke-linecap="round"/><circle cx="20" cy="13.4" r="3.1" fill="#E8C46A"/><path d="M14 27h12" stroke="#8FC9B4" stroke-width="2.6" stroke-linecap="round"/></svg>
+      </span>
+      <span class="brand-text"><span class="brand-name">RencanaMampu</span><span class="brand-tag">Uji mesin aturan</span></span>
+    </a>
+    <div class="header-tools"><a class="btn btn-secondary btn-sm" href="index.html">Kembali ke aplikasi</a></div>
+  </div>
+</header>
+
+<main class="app">
+  <div id="app" style="max-width:900px;margin:0 auto;padding:32px 24px 72px;display:flex;flex-direction:column;gap:24px">
+    <div>
+      <p class="eyebrow">Deterministik · tanpa AI</p>
+      <h1 style="font-size:clamp(30px,4vw,40px)">Unit test aturan konflik</h1>
+      <p style="margin-top:10px;color:#35463F;max-width:70ch">Setiap aturan diuji dengan data sintetis: waktu, keterampilan, pendamping, transportasi, biaya, alat, digital, beban kumulatif, kesegaran data, dan penerapan efek keputusan. Halaman ini tidak mengirim data ke mana pun.</p>
+    </div>
+    <div id="test-summary" aria-live="polite"></div>
+    <div id="test-results" class="stack-4"></div>
+    <p class="small muted">Prototipe MVP. Data uji bukan data pasien nyata. Bila ada uji gagal, periksa <code>rules-config.js</code> dan <code>js/rules.js</code>.</p>
+  </div>
+</main>
+
+<script src="rules-config.js"></script>
+<script src="js/rules.js"></script>
+<script src="js/data.js"></script>
+<script src="js/rules.test.js"></script>
+</body>
+</html>

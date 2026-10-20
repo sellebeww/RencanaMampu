@@ -1,0 +1,2721 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="description" content="RujukSekali menyusun beberapa layanan kesehatan menjadi satu rangkaian kunjungan: slot ditahan, ketergantungan diperiksa, perjalanan dikonfirmasi hanya saat siap." />
+<meta name="theme-color" content="#0B453C" />
+<title>RujukSekali — Satu perjalanan untuk layanan yang Anda butuhkan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230B453C'/%3E%3Cpath d='M8 21c3 0 3-8 8-8s5 8 8 8' fill='none' stroke='%23F4F6F1' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='21' r='2' fill='%23D9A441'/%3E%3Ccircle cx='24' cy='21' r='2' fill='%23D9A441'/%3E%3Ccircle cx='16' cy='13' r='2.2' fill='%23F4F6F1'/%3E%3C/svg%3E" />
+<style>
+  :root {
+    --paper: #F4F6F1;
+    --surface: #FFFFFF;
+    --ink: #0E211C;
+    --ink-2: #3F534C;
+    --ink-3: #5B6E67;
+    --petrol: #0B453C;
+    --petrol-deep: #062C27;
+    --petrol-soft: #14655A;
+    --sage: #DCE9E1;
+    --sage-2: #EDF3EE;
+    --line: #D8DFD8;
+    --line-strong: #C2CEC3;
+    --amber: #D9A441;
+    --amber-soft: #F7EBCB;
+    --amber-ink: #5F4209;
+    --danger: #A6442D;
+    --radius-sm: 10px;
+    --radius: 14px;
+    --radius-lg: 22px;
+    --shadow: 0 1px 2px rgba(11, 69, 60, .05), 0 18px 40px -26px rgba(11, 69, 60, .45);
+    --max: 1180px;
+    --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+    --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 400; letter-spacing: -.018em; }
+  p { margin: 0; }
+  a { color: inherit; }
+  button { font: inherit; color: inherit; }
+  img, svg { max-width: 100%; }
+  [hidden] { display: none !important; }
+  ::selection { background: var(--amber-soft); color: var(--ink); }
+
+  .od-icon {
+    display: inline-block;
+    inline-size: var(--od-icon-size, 1em);
+    block-size: var(--od-icon-size, 1em);
+    flex: none;
+    vertical-align: -.12em;
+  }
+  .i-12 { --od-icon-size: 12px; }
+  .i-14 { --od-icon-size: 14px; }
+  .i-16 { --od-icon-size: 16px; }
+  .i-18 { --od-icon-size: 18px; }
+  .i-20 { --od-icon-size: 20px; }
+  .i-24 { --od-icon-size: 24px; }
+
+  .wrap {
+    width: 100%;
+    max-width: var(--max);
+    margin-inline: auto;
+    padding-inline: clamp(20px, 4vw, 40px);
+  }
+  .section { padding-block: clamp(64px, 9vw, 112px); }
+  .section-dark { background: var(--petrol-deep); color: var(--paper); }
+  section[id] { scroll-margin-top: 88px; }
+
+  .skip-link {
+    position: fixed;
+    left: 16px;
+    top: 12px;
+    z-index: 200;
+    transform: translateY(-160%);
+    background: var(--petrol);
+    color: #F4F6F1;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .skip-link:focus { transform: none; }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--petrol);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .section-dark :focus-visible,
+  .site-footer :focus-visible {
+    outline-color: #F4C86A;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--petrol-soft);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: currentColor;
+    opacity: .65;
+    flex: none;
+  }
+  .section-dark .eyebrow { color: #A9C9BE; }
+
+  .section-title {
+    font-size: clamp(2rem, 4.3vw, 3.15rem);
+    line-height: 1.06;
+    max-width: 22ch;
+    margin-top: 18px;
+  }
+  .section-lead {
+    color: var(--ink-2);
+    font-size: 16.5px;
+    line-height: 1.65;
+    max-width: 48ch;
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+    gap: 40px;
+    align-items: end;
+    margin-bottom: clamp(32px, 5vw, 52px);
+  }
+  .section-head .section-lead { padding-bottom: 4px; }
+  .section-dark .section-lead { color: #C6D9D1; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 46px;
+    padding: 0 20px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+  .btn-primary { background: var(--petrol); color: #F7FBF8; }
+  .btn-primary:hover { background: var(--petrol-deep); }
+  .btn-ghost { background: transparent; border-color: var(--line-strong); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--petrol); background: #FFFFFF; }
+  .btn-light { background: var(--paper); color: var(--petrol-deep); }
+  .btn-light:hover { background: #FFFFFF; }
+  .btn-outline-light { border-color: rgba(244, 246, 241, .34); color: #F4F6F1; }
+  .btn-outline-light:hover { border-color: rgba(244, 246, 241, .7); background: rgba(244, 246, 241, .08); }
+  .btn-sm { min-height: 38px; padding: 0 14px; font-size: 13px; }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .pill::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex: none;
+  }
+  .pill-held { background: var(--amber-soft); color: var(--amber-ink); }
+  .pill-ready { background: var(--sage); color: var(--petrol); }
+  .pill-wait { background: #E9EDE7; color: #4E6059; }
+  .pill-confirm { background: var(--petrol); color: #F4F6F1; }
+
+  .mini {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: #ECEFEA;
+    color: var(--ink-3);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    white-space: nowrap;
+  }
+
+  /* Header */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    background: rgba(244, 246, 241, .93);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s ease;
+  }
+  .site-header.is-scrolled { border-bottom-color: var(--line); }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 72px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    flex: none;
+  }
+  .brand-mark { width: 38px; height: 38px; display: block; flex: none; }
+  .brand-name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -.015em;
+  }
+  .brand-sub {
+    display: block;
+    margin-top: 4px;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    line-height: 1;
+  }
+  .nav-desktop { display: flex; align-items: center; gap: 26px; }
+  .nav-desktop a {
+    position: relative;
+    padding-block: 6px;
+    color: var(--ink-2);
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .nav-desktop a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--petrol);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .2s ease;
+  }
+  .nav-desktop a:hover { color: var(--ink); }
+  .nav-desktop a:hover::after { transform: scaleX(1); }
+  .header-actions { display: flex; align-items: center; gap: 10px; flex: none; }
+  .menu-btn {
+    display: none;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border: 1px solid var(--line-strong);
+    border-radius: 10px;
+    background: #FFFFFF;
+    cursor: pointer;
+  }
+  .mobile-nav {
+    display: none;
+    border-top: 1px solid var(--line);
+    padding: 8px clamp(20px, 4vw, 40px) 18px;
+    background: var(--paper);
+  }
+  .mobile-nav.is-open { display: block; }
+  .mobile-nav a {
+    display: block;
+    padding: 12px 2px;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .mobile-nav a:last-child { border-bottom: 0; }
+
+  /* Hero */
+  .hero { padding-block: clamp(44px, 7vw, 86px) clamp(60px, 8vw, 100px); }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    gap: clamp(40px, 6vw, 76px);
+    align-items: center;
+  }
+  .hero h1 {
+    margin-block: 20px 22px;
+    font-size: clamp(2.7rem, 5.6vw, 4.55rem);
+    line-height: .99;
+    letter-spacing: -.028em;
+    max-width: 15ch;
+  }
+  .hero .lead {
+    color: var(--ink-2);
+    font-size: clamp(1rem, 1.35vw, 1.1rem);
+    max-width: 52ch;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .hero-facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 42px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line-strong);
+  }
+  .fact-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .fact-value { margin-top: 5px; font-size: 13.5px; font-weight: 600; line-height: 1.4; }
+
+  .journey-card {
+    position: relative;
+    isolation: isolate;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow);
+  }
+  .journey-card::before {
+    content: "";
+    position: absolute;
+    inset: 16px -9px -9px 16px;
+    background: var(--sage);
+    border-radius: var(--radius-lg);
+    transform: rotate(1.4deg);
+    z-index: -1;
+  }
+  .jc-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .jc-kicker {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .jc-code {
+    margin-top: 4px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--petrol);
+    letter-spacing: .02em;
+  }
+  .jc-patient {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-top: 18px;
+    padding-block: 14px;
+    border-top: 1px dashed var(--line-strong);
+    border-bottom: 1px dashed var(--line-strong);
+  }
+  .jc-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--sage);
+    color: var(--petrol);
+    display: grid;
+    place-items: center;
+    font-size: 11.5px;
+    font-weight: 700;
+    flex: none;
+  }
+  .jc-name { font-size: 13.5px; font-weight: 700; line-height: 1.3; }
+  .jc-meta { margin-top: 2px; font-size: 11.5px; color: var(--ink-3); line-height: 1.4; }
+  .jc-route { list-style: none; margin: 8px 0 0; padding: 0; }
+  .jc-stop {
+    position: relative;
+    display: grid;
+    grid-template-columns: 50px 22px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    padding-block: 11px;
+  }
+  .jc-stop + .jc-stop::before {
+    content: "";
+    position: absolute;
+    left: 70px;
+    top: -10px;
+    height: 22px;
+    border-left: 1px dashed var(--line-strong);
+  }
+  .jc-time {
+    padding-top: 2px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--petrol);
+  }
+  .jc-node {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid var(--line-strong);
+    background: #FFFFFF;
+    color: var(--petrol);
+    display: grid;
+    place-items: center;
+  }
+  .jc-stop.is-ready .jc-node { background: var(--petrol); border-color: var(--petrol); color: #FFFFFF; }
+  .jc-stop.is-held .jc-node { background: var(--amber-soft); border-color: var(--amber); color: var(--amber-ink); }
+  .jc-stop.is-wait .jc-node { border-style: dashed; }
+  .jc-body { min-width: 0; }
+  .jc-title { font-size: 13.5px; font-weight: 700; line-height: 1.35; }
+  .jc-place { margin-top: 2px; font-size: 11.5px; color: var(--ink-3); line-height: 1.4; }
+  .jc-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+    font-size: 10.5px;
+    font-weight: 700;
+  }
+  .is-ready .jc-status { color: var(--petrol); }
+  .is-held .jc-status { color: var(--amber-ink); }
+  .is-wait .jc-status { color: var(--ink-3); }
+  .jc-hold-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 6px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    background: var(--sage-2);
+    color: var(--ink-2);
+    font-size: 10.5px;
+    line-height: 1.5;
+  }
+  .jc-hold-note .od-icon { color: var(--petrol); margin-top: 1px; }
+  .jc-foot {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 16px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--line-strong);
+  }
+  .jc-stat-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .jc-stat-value { margin-top: 3px; font-size: 13.5px; font-weight: 700; line-height: 1.35; }
+  .jc-stat-value em { font-style: normal; color: var(--petrol-soft); }
+
+  /* Profile */
+  .profile {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(64px, 9vw, 108px);
+  }
+  .profile-route {
+    position: absolute;
+    top: 20px;
+    right: -70px;
+    width: 620px;
+    max-width: 70%;
+    opacity: .16;
+    pointer-events: none;
+  }
+  .profile .wrap { position: relative; z-index: 1; }
+  .profile h2 { color: #FFFFFF; }
+  .profile-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+    gap: clamp(36px, 5vw, 70px);
+    margin-top: 36px;
+    align-items: start;
+  }
+  .profile-copy p { color: #C6D9D1; font-size: 15.5px; line-height: 1.7; }
+  .profile-copy p + p { margin-top: 16px; }
+  .facts {
+    margin: 0;
+    border-top: 1px solid rgba(255, 255, 255, .16);
+  }
+  .fact-row {
+    display: grid;
+    grid-template-columns: 118px minmax(0, 1fr);
+    gap: 14px;
+    padding-block: 11px;
+    border-bottom: 1px solid rgba(255, 255, 255, .16);
+  }
+  .fact-row dt {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #9DBBB1;
+    padding-top: 2px;
+  }
+  .fact-row dd {
+    margin: 0;
+    color: #F2F7F3;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .values {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 42px;
+  }
+  .value {
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, .045);
+  }
+  .value h3 {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0;
+  }
+  .value h3 .od-icon { color: #F4C86A; }
+  .value p { margin-top: 7px; color: #B9CFC6; font-size: 12.5px; line-height: 1.6; }
+
+  /* Problem */
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .pain { border-top: 1px solid var(--line-strong); padding-top: 16px; }
+  .pain-index { font-family: var(--font-display); font-size: 20px; color: var(--petrol); line-height: 1; }
+  .pain h3 { margin-top: 10px; font-family: var(--font-sans); font-size: 15px; font-weight: 700; letter-spacing: 0; }
+  .pain p { margin-top: 6px; color: var(--ink-2); font-size: 13.5px; line-height: 1.6; }
+
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 40px;
+  }
+  .compare-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: #FFFFFF;
+    padding: 22px;
+  }
+  .compare-card.is-new { background: var(--sage-2); border-color: var(--sage); }
+  .compare-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+  .compare-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .compare-count { display: flex; align-items: baseline; gap: 7px; }
+  .compare-count strong {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4vw, 3.1rem);
+    font-weight: 400;
+    line-height: .85;
+    color: var(--petrol);
+  }
+  .compare-count span { font-size: 11.5px; font-weight: 600; color: var(--ink-3); }
+  .trip-list { list-style: none; margin: 18px 0 0; padding: 0; }
+  .trip-row {
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+    padding-block: 10px;
+    border-top: 1px solid var(--line);
+    font-size: 12.5px;
+  }
+  .trip-day { font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; color: var(--ink-3); }
+  .trip-name { font-weight: 600; line-height: 1.35; }
+  .trip-tag { font-size: 10.5px; font-weight: 700; color: var(--ink-3); white-space: nowrap; }
+  .is-new .trip-tag { color: var(--petrol); }
+  .compare-note { margin-top: 16px; font-size: 11px; color: var(--ink-3); line-height: 1.5; }
+
+  /* How it works */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .step { border-top: 1px solid var(--line-strong); padding-top: 16px; }
+  .step-num { font-family: var(--font-display); font-size: 24px; color: var(--petrol); line-height: 1; }
+  .step h3 { margin-top: 12px; font-family: var(--font-sans); font-size: 15px; font-weight: 700; letter-spacing: 0; }
+  .step p { margin-top: 7px; color: var(--ink-2); font-size: 13.5px; line-height: 1.6; }
+  .step-tag {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .policy {
+    display: grid;
+    grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+    gap: 32px;
+    margin-top: 44px;
+    padding: clamp(24px, 4vw, 34px);
+    background: var(--sage-2);
+    border: 1px solid var(--sage);
+    border-radius: var(--radius);
+  }
+  .policy h3 { margin-top: 11px; font-size: clamp(1.4rem, 2.4vw, 1.8rem); line-height: 1.15; max-width: 18ch; }
+  .policy-body p { color: var(--ink-2); font-size: 14px; line-height: 1.65; }
+  .policy-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
+  .policy-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    color: var(--ink-2);
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+  .policy-list .od-icon { color: var(--petrol); margin-top: 3px; }
+
+  /* Simulator */
+  .sim-card {
+    border: 1px solid var(--line-strong);
+    border-radius: 18px;
+    background: #FFFFFF;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .sim-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--line);
+    background: #FAFBF8;
+  }
+  .sim-title { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; }
+  .sim-title .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex: none;
+  }
+  .sim-sub { margin-left: 2px; font-size: 11px; font-weight: 500; color: var(--ink-3); }
+  .sim-body {
+    display: grid;
+    grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr);
+  }
+  .sim-controls { padding: clamp(18px, 3vw, 26px); border-right: 1px solid var(--line); }
+  .sim-map { padding: clamp(18px, 3vw, 26px); background: #FCFDFA; }
+  .sim-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 9px;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .sim-label .hint { letter-spacing: .02em; text-transform: none; font-weight: 600; font-size: 10px; color: var(--ink-3); }
+  .scenarios { display: grid; gap: 7px; }
+  .scenario {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: #FFFFFF;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color .18s ease, background-color .18s ease, box-shadow .18s ease;
+  }
+  .scenario:hover { border-color: var(--line-strong); background: #FBFCF8; }
+  .scenario[aria-pressed="true"] {
+    border-color: var(--petrol);
+    background: var(--sage-2);
+    box-shadow: inset 0 0 0 1px var(--petrol);
+  }
+  .scenario-radio {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    border: 1.5px solid var(--line-strong);
+    border-radius: 50%;
+    flex: none;
+    background: #FFFFFF;
+  }
+  .scenario[aria-pressed="true"] .scenario-radio { border-color: var(--petrol); background: var(--petrol); }
+  .scenario-radio::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    opacity: 0;
+  }
+  .scenario[aria-pressed="true"] .scenario-radio::after { opacity: 1; }
+  .scenario-text { min-width: 0; }
+  .scenario-text strong { display: block; font-size: 12.5px; font-weight: 700; line-height: 1.35; }
+  .scenario-text span { display: block; margin-top: 1px; font-size: 10.5px; color: var(--ink-3); line-height: 1.4; }
+
+  .hold-block {
+    margin-top: 16px;
+    padding: 13px;
+    border: 1px solid var(--line);
+    border-radius: 11px;
+    background: #FAFBF7;
+  }
+  .hold-block.is-held { border-color: #E7CE94; background: #FEFAF0; }
+  .hold-block.is-confirmed { border-color: var(--sage); background: var(--sage-2); }
+  .hold-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .hold-status { display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; }
+  .hold-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-3); flex: none; }
+  .is-held .hold-dot { background: var(--amber); }
+  .is-confirmed .hold-dot { background: var(--petrol); }
+  .hold-time {
+    font-family: var(--font-mono);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: .02em;
+    color: var(--ink);
+  }
+  .is-held .hold-time { color: var(--amber-ink); }
+  .hold-desc { margin-top: 5px; font-size: 10.5px; line-height: 1.5; color: var(--ink-3); }
+  .hold-progress {
+    height: 3px;
+    margin-top: 10px;
+    border-radius: 99px;
+    background: #E5E9E2;
+    overflow: hidden;
+  }
+  .hold-progress i {
+    display: block;
+    height: 100%;
+    background: var(--amber);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .5s linear;
+  }
+  .hold-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; }
+
+  .deps { display: grid; }
+  .dep {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+    padding-block: 9px;
+    border-bottom: 1px solid var(--line);
+  }
+  .dep:last-child { border-bottom: 0; }
+  .dep-icon {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: var(--sage-2);
+    color: var(--petrol);
+  }
+  .dep-text { min-width: 0; }
+  .dep-label { font-size: 12px; font-weight: 700; line-height: 1.35; }
+  .dep-optional {
+    display: inline-block;
+    margin-left: 5px;
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: #ECEFEA;
+    color: var(--ink-3);
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    vertical-align: 1px;
+  }
+  .dep-detail { margin-top: 1px; font-size: 10px; color: var(--ink-3); line-height: 1.45; }
+  .dep-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    min-height: 32px;
+    padding: 0 9px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: #FFFFFF;
+    font-size: 10.5px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .dep-toggle:hover:not(:disabled) { border-color: var(--petrol); }
+  .dep-toggle .od-icon { opacity: 0; }
+  .dep-toggle[aria-pressed="true"] { background: var(--petrol); border-color: var(--petrol); color: #FFFFFF; }
+  .dep-toggle[aria-pressed="true"] .od-icon { opacity: 1; }
+  .dep-toggle:disabled { opacity: .42; cursor: not-allowed; }
+
+  .sim-actions { margin-top: 16px; }
+  .sim-actions .btn { width: 100%; }
+  .confirm-hint { margin-top: 7px; font-size: 10.5px; line-height: 1.5; color: var(--ink-3); }
+
+  .sim-result {
+    margin-top: 14px;
+    padding: 14px;
+    border: 1px solid var(--sage);
+    border-radius: 11px;
+    background: var(--sage-2);
+  }
+  .result-head { display: flex; align-items: flex-start; gap: 9px; }
+  .result-head .od-icon { color: var(--petrol); margin-top: 2px; }
+  .result-head h3 { font-family: var(--font-sans); font-size: 12.5px; font-weight: 700; letter-spacing: 0; }
+  .result-code { margin-top: 2px; font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--petrol); }
+  .result-meta { margin-top: 8px; font-size: 10.5px; color: var(--ink-2); line-height: 1.5; }
+  .result-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
+
+  .map-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .map-title { font-size: 12px; font-weight: 700; letter-spacing: .02em; }
+  .confirm-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 12px 13px;
+    border-radius: 10px;
+    background: var(--petrol);
+    color: #F4F6F1;
+  }
+  .confirm-banner .od-icon { color: #F4C86A; margin-top: 2px; }
+  .confirm-banner strong { display: block; font-size: 11.5px; font-weight: 700; line-height: 1.4; }
+  .confirm-banner span { display: block; margin-top: 2px; font-size: 10.5px; color: #C6D9D1; line-height: 1.5; }
+
+  .timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 66px;
+    top: 16px;
+    bottom: 18px;
+    border-left: 1px dashed var(--line-strong);
+    z-index: 0;
+  }
+  .tl-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 44px 28px minmax(0, 1fr);
+    gap: 8px;
+    padding-block: 9px;
+    align-items: start;
+  }
+  .tl-time {
+    padding-top: 3px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--petrol);
+  }
+  .tl-node {
+    z-index: 1;
+    width: 16px;
+    height: 16px;
+    margin: 3px auto 0;
+    border: 1.5px solid var(--line-strong);
+    border-radius: 50%;
+    background: #FFFFFF;
+    display: grid;
+    place-items: center;
+    color: #FFFFFF;
+  }
+  .tl-node .od-icon { opacity: 0; }
+  .tl-body { min-width: 0; }
+  .tl-title { font-size: 12.5px; font-weight: 700; line-height: 1.35; }
+  .tl-meta { margin-top: 1px; font-size: 10px; color: var(--ink-3); line-height: 1.4; }
+  .tl-prep { margin-top: 3px; font-size: 10px; color: var(--ink-2); line-height: 1.45; }
+  .tl-body .mini { margin-top: 5px; }
+
+  .tl-item.is-ready .tl-node,
+  .tl-item.is-confirmed .tl-node { background: var(--petrol); border-color: var(--petrol); }
+  .tl-item.is-ready .tl-node .od-icon,
+  .tl-item.is-confirmed .tl-node .od-icon { opacity: 1; }
+  .tl-item.is-held .tl-node { background: var(--amber-soft); border-color: var(--amber); }
+  .tl-item.is-off .tl-body { opacity: .62; }
+  .tl-item.is-off .tl-node { border-style: dashed; background: #F4F6F1; }
+  .tl-item.is-ready .mini { background: var(--sage); color: var(--petrol); }
+  .tl-item.is-held .mini { background: var(--amber-soft); color: var(--amber-ink); }
+  .tl-item.is-confirmed .mini { background: var(--petrol); color: #F4F6F1; }
+  .tl-item.is-off .mini { background: #ECEFEA; color: var(--ink-3); }
+
+  .map-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+  }
+  .map-stat-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    line-height: 1.4;
+  }
+  .map-stat-value { margin-top: 3px; font-size: 13px; font-weight: 700; line-height: 1.3; }
+  .map-note { margin-top: 12px; font-size: 10px; color: var(--ink-3); line-height: 1.5; }
+
+  /* Features */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 34px 30px;
+  }
+  .feature { border-top: 1px solid var(--line-strong); padding-top: 15px; }
+  .feature-num { font-family: var(--font-display); font-size: 19px; color: var(--petrol); line-height: 1; }
+  .feature h3 { margin-top: 9px; font-family: var(--font-sans); font-size: 15px; font-weight: 700; letter-spacing: 0; }
+  .feature p { margin-top: 6px; font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+
+  /* Impact */
+  .metric-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .metric { border-top: 2px solid var(--petrol); padding-top: 15px; }
+  .metric-def {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .metric h3 { margin-top: 7px; font-size: 22px; line-height: 1.15; }
+  .metric p { margin-top: 7px; font-size: 12.5px; line-height: 1.6; color: var(--ink-2); }
+  .biz {
+    display: grid;
+    grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+    gap: 28px;
+    align-items: center;
+    margin-top: 40px;
+    padding: clamp(24px, 4vw, 36px);
+    border-radius: 16px;
+    background: var(--petrol);
+    color: #F2F7F3;
+  }
+  .biz .eyebrow { color: #A9C9BE; }
+  .biz h3 { margin-top: 10px; color: #FFFFFF; font-size: clamp(1.5rem, 2.6vw, 1.9rem); line-height: 1.15; max-width: 18ch; }
+  .biz p { color: #C6D9D1; font-size: 13.5px; line-height: 1.65; }
+  .biz-line {
+    margin-top: 13px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: .01em;
+    color: #F4C86A;
+  }
+  .biz-note { margin-top: 8px; color: #9DBBB1; font-size: 10.5px; line-height: 1.5; }
+
+  /* MVP */
+  .mvp-grid {
+    display: grid;
+    grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+    gap: clamp(32px, 5vw, 64px);
+    align-items: start;
+  }
+  .difficulty {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 16px;
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: var(--amber-soft);
+    color: var(--amber-ink);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .difficulty::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+  }
+  .difficulty-note { margin-top: 10px; font-size: 12.5px; color: var(--ink-3); line-height: 1.6; max-width: 34ch; }
+  .scope { border-top: 1px solid var(--line-strong); }
+  .scope-item {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 12px;
+    padding-block: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .scope-num { font-family: var(--font-display); font-size: 17px; color: var(--petrol); line-height: 1.2; }
+  .scope-item h3 { font-family: var(--font-sans); font-size: 13.5px; font-weight: 700; letter-spacing: 0; }
+  .scope-item p { margin-top: 3px; font-size: 12.5px; color: var(--ink-2); line-height: 1.55; }
+  .roadmap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: clamp(34px, 5vw, 48px); }
+  .phase { border-top: 1px solid var(--line-strong); padding-top: 13px; }
+  .phase-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--petrol-soft);
+  }
+  .phase h4 { margin-top: 7px; font-family: var(--font-sans); font-size: 13.5px; font-weight: 700; letter-spacing: 0; }
+  .phase p { margin-top: 5px; font-size: 12px; color: var(--ink-2); line-height: 1.55; }
+  .outside {
+    margin-top: 24px;
+    padding-top: 13px;
+    border-top: 1px dashed var(--line);
+    font-size: 11.5px;
+    color: var(--ink-3);
+    line-height: 1.6;
+  }
+
+  /* Risks */
+  .risk-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .risk {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: #FFFFFF;
+  }
+  .risk-tag {
+    align-self: flex-start;
+    padding: 3px 7px;
+    border-radius: 5px;
+    background: var(--amber-soft);
+    color: var(--amber-ink);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+  .risk h3 { font-family: var(--font-sans); font-size: 14.5px; font-weight: 700; letter-spacing: 0; line-height: 1.35; }
+  .risk-block-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .risk-block p { margin-top: 2px; font-size: 12px; line-height: 1.55; color: var(--ink-2); }
+  .validation {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    gap: 30px;
+    margin-top: 28px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: #FFFFFF;
+  }
+  .validation .eyebrow { color: var(--petrol-soft); }
+  .validation-quote { margin-top: 10px; font-family: var(--font-display); font-size: clamp(1.25rem, 2.2vw, 1.55rem); line-height: 1.35; max-width: 34ch; }
+  .citation-label { font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+  .citation p { margin-top: 7px; font-size: 11.5px; line-height: 1.6; color: var(--ink-2); }
+  .citation a { color: var(--petrol); text-underline-offset: 3px; }
+  .citation a:hover { color: var(--petrol-deep); }
+
+  /* CTA */
+  .cta { padding-block: clamp(60px, 8vw, 96px); }
+  .cta-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: center; }
+  .cta h2 { color: #FFFFFF; font-size: clamp(2.2rem, 4.4vw, 3.3rem); line-height: 1.05; max-width: 16ch; }
+  .cta p { margin-top: 13px; color: #C6D9D1; font-size: 14.5px; line-height: 1.65; max-width: 46ch; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .cta-note { margin-top: 12px; font-size: 10.5px; color: #93B4A8; line-height: 1.5; }
+  .contact-card {
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .045);
+  }
+  .contact-card h3 {
+    font-family: var(--font-sans);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: #A9C9BE;
+  }
+  .contact-list { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 0; }
+  .contact-list li {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 10px;
+    padding-block: 10px;
+    border-top: 1px solid rgba(255, 255, 255, .12);
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #D7E5DE;
+  }
+  .contact-num { font-family: var(--font-mono); font-size: 10px; color: #F4C86A; padding-top: 1px; }
+
+  /* Footer */
+  .site-footer { padding-block: 34px 38px; background: #04211D; color: #A9C4BA; border-top: 1px solid rgba(255, 255, 255, .08); }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; }
+  .footer-brand .brand-name { color: #F2F7F3; }
+  .footer-brand .brand-sub { color: #8FB0A4; }
+  .footer-tagline { margin-top: 10px; max-width: 34ch; font-size: 12px; line-height: 1.55; color: #A9C4BA; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 22px; }
+  .footer-links a { font-size: 12px; font-weight: 600; color: #C6DBD2; text-decoration: none; }
+  .footer-links a:hover { color: #FFFFFF; }
+  .footer-note {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    max-width: 92ch;
+    font-size: 10.5px;
+    line-height: 1.65;
+    color: #8FB0A4;
+  }
+  .footer-note strong { color: #C6DBD2; font-weight: 600; }
+
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    z-index: 120;
+    max-width: calc(100% - 32px);
+    padding: 11px 16px;
+    border-radius: 9px;
+    background: var(--ink);
+    color: #F4F6F1;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.4;
+    box-shadow: 0 12px 30px -12px rgba(0, 0, 0, .5);
+    opacity: 0;
+    transform: translate(-50%, 10px);
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-copy > * { animation: rise .55s ease-out both; }
+    .hero-copy > *:nth-child(2) { animation-delay: .04s; }
+    .hero-copy > *:nth-child(3) { animation-delay: .08s; }
+    .hero-copy > *:nth-child(4) { animation-delay: .12s; }
+    .journey-card { animation: rise .6s ease-out .1s both; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: none; }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+    }
+  }
+
+  @media (min-width: 1021px) {
+    .mobile-nav.is-open { display: none; }
+  }
+
+  @media (max-width: 1020px) {
+    .nav-desktop { display: none; }
+    .menu-btn { display: grid; }
+    .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+    .hero h1 { max-width: 18ch; }
+    .journey-card { max-width: 560px; }
+    .section-head { grid-template-columns: 1fr; gap: 18px; align-items: start; }
+    .profile-grid { grid-template-columns: 1fr; gap: 32px; }
+    .values { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 24px; }
+    .policy { grid-template-columns: 1fr; gap: 18px; }
+    .sim-body { grid-template-columns: 1fr; }
+    .sim-controls { border-right: 0; border-bottom: 1px solid var(--line); }
+    .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .biz { grid-template-columns: 1fr; gap: 16px; }
+    .mvp-grid { grid-template-columns: 1fr; gap: 30px; }
+    .risk-grid { grid-template-columns: 1fr 1fr; }
+    .risk-grid .risk:last-child { grid-column: 1 / -1; }
+    .validation { grid-template-columns: 1fr; gap: 20px; }
+    .cta-grid { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  @media (max-width: 720px) {
+    body { font-size: 16px; }
+    .hero-facts { grid-template-columns: 1fr; gap: 10px; }
+    .hero-facts > div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+    .fact-value { margin-top: 0; text-align: right; }
+    .comparison { grid-template-columns: 1fr; }
+    .pain-grid { grid-template-columns: 1fr; gap: 20px; }
+    .steps { grid-template-columns: 1fr; }
+    .values { grid-template-columns: 1fr; }
+    .feature-grid { grid-template-columns: 1fr; gap: 26px; }
+    .metric-grid { grid-template-columns: 1fr; gap: 20px; }
+    .roadmap { grid-template-columns: 1fr; gap: 20px; }
+    .risk-grid { grid-template-columns: 1fr; }
+    .risk-grid .risk:last-child { grid-column: auto; }
+    .map-stats { grid-template-columns: 1fr; gap: 8px; }
+    .map-stat-label { display: inline; }
+    .map-stat-value { display: inline; margin-left: 6px; }
+    .header-actions .btn { display: none; }
+    .brand-sub { display: none; }
+    .dep-toggle { min-height: 44px; padding: 0 12px; }
+    .btn-sm { min-height: 44px; }
+    .journey-card { padding: 20px; }
+    .jc-foot { grid-template-columns: 1fr; gap: 10px; }
+    .timeline::before { left: 63px; }
+    .tl-item { grid-template-columns: 41px 26px minmax(0, 1fr); }
+    .dep { grid-template-columns: 26px minmax(0, 1fr) auto; }
+    .dep-detail { font-size: 9.5px; }
+  }
+
+  @media (max-width: 420px) {
+    .hero h1 { font-size: 2.55rem; }
+    .hero-actions .btn { width: 100%; }
+    .sim-topbar { flex-wrap: wrap; }
+    .sim-sub { display: none; }
+    .hold-row { align-items: flex-start; }
+    .hold-time { font-size: 17px; }
+    .result-actions .btn { flex: 1 1 auto; }
+  }
+</style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true" focusable="false">
+  <symbol id="i-route" viewBox="0 0 24 24">
+    <path d="M4 18c4 0 4-12 8-12s4 12 8 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="4" cy="18" r="2" fill="currentColor"/>
+    <circle cx="20" cy="18" r="2" fill="currentColor"/>
+    <circle cx="12" cy="6" r="2" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-file" viewBox="0 0 24 24">
+    <path d="M7 3.5h6.6L18.5 8v12.5h-11z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+    <path d="M13.4 3.6V8h4.8M10 12.5h5M10 16h3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-users" viewBox="0 0 24 24">
+    <circle cx="9" cy="8" r="3.1" fill="none" stroke="currentColor" stroke-width="1.7"/>
+    <path d="M3.6 19c0-3 2.4-5 5.4-5s5.4 2 5.4 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+    <path d="M15.8 5.5a3 3 0 010 5M17.4 14.5c1.8.6 3 2.3 3 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-bus" viewBox="0 0 24 24">
+    <rect x="4" y="4.5" width="16" height="12" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+    <path d="M4 11h16M8 16.5v2M16 16.5v2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+    <circle cx="8" cy="13.3" r=".9" fill="currentColor"/>
+    <circle cx="16" cy="13.3" r=".9" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+    <path d="M12 7.5V12l3 1.9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24">
+    <path d="M5.5 12.5l4.3 4.2L18.5 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24">
+    <path d="M5 12h13M13 6.5l5.5 5.5-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24">
+    <path d="M12 3.2l7 2.9v5.6c0 4.5-2.9 7.5-7 9.1-4.1-1.6-7-4.6-7-9.1V6.1z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+    <path d="M8.8 12l2.2 2.2 4.2-4.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24">
+    <path d="M12 3.8l8 3.9-8 3.9-8-3.9z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+    <path d="M4 12l8 3.9 8-3.9M4 16.2l8 3.9 8-3.9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24">
+    <rect x="8.5" y="8.5" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/>
+    <path d="M15.5 8.5V6.4a2 2 0 00-2-2h-7a2 2 0 00-2 2v7a2 2 0 002 2h2.1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24">
+    <rect x="3" y="5.5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/>
+    <path d="M3.6 7l8.4 6 8.4-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24">
+    <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24">
+    <path d="M9 3.5h6M10 3.5v5.7L5.4 17.9A2 2 0 007.1 21h9.8a2 2 0 001.7-3.1L14 9.2V3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.4 15h9.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24">
+    <path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+    <circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/>
+  </symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24">
+    <rect x="4" y="5.5" width="16" height="14.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/>
+    <path d="M8 3.5v4M16 3.5v4M4 10.5h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="RujukSekali, kembali ke atas">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="11" fill="#0B453C"/>
+        <path d="M9 27c4.2 0 4.2-11 11-11s6.8 11 11 11" fill="none" stroke="#F4F6F1" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="9" cy="27" r="2.4" fill="#D9A441"/>
+        <circle cx="31" cy="27" r="2.4" fill="#D9A441"/>
+        <circle cx="20" cy="16" r="2.7" fill="#F4F6F1"/>
+      </svg>
+      <span>
+        <span class="brand-name">RujukSekali</span>
+        <span class="brand-sub">Koordinasi perjalanan pasien</span>
+      </span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Navigasi utama">
+      <a href="#profil">Profil</a>
+      <a href="#masalah">Masalah</a>
+      <a href="#cara-kerja">Cara kerja</a>
+      <a href="#simulasi">Simulasi</a>
+      <a href="#dampak">Dampak</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-sm btn-primary" href="#simulasi">Coba simulasi</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Buka menu">
+        <svg class="od-icon i-20" aria-hidden="true"><use href="#i-menu"></use></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#profil">Profil perusahaan</a>
+    <a href="#masalah">Masalah</a>
+    <a href="#cara-kerja">Cara kerja</a>
+    <a href="#simulasi">Simulasi perjalanan</a>
+    <a href="#fitur">Fitur inti</a>
+    <a href="#dampak">Dampak &amp; model</a>
+    <a href="#mvp">MVP</a>
+    <a href="#risiko">Risiko</a>
+    <a href="#kontak">Kontak</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Profil perusahaan · Konsep produk</p>
+        <h1>Bukan tiga perjalanan. Satu hari yang tersusun.</h1>
+        <p class="lead">RujukSekali menyusun beberapa layanan kesehatan menjadi satu rangkaian kunjungan. Slot ditahan lebih dulu, ketergantungan diperiksa, dan perjalanan baru dikonfirmasi ketika dokumen, pendamping, serta transport benar-benar siap.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#simulasi">
+            Jalankan simulasi
+            <svg class="od-icon i-16" aria-hidden="true"><use href="#i-arrow"></use></svg>
+          </a>
+          <a class="btn btn-ghost" href="#cara-kerja">Baca cara kerja</a>
+        </div>
+        <div class="hero-facts">
+          <div>
+            <div class="fact-label">Untuk siapa</div>
+            <div class="fact-value">Pasien luar kota dengan beberapa layanan</div>
+          </div>
+          <div>
+            <div class="fact-label">Unit yang dikelola</div>
+            <div class="fact-value">Episode perjalanan, bukan janji temu</div>
+          </div>
+          <div>
+            <div class="fact-label">Cakupan awal</div>
+            <div class="fact-value">1 rumah sakit · 2 layanan non-darurat</div>
+          </div>
+        </div>
+      </div>
+
+      <article class="journey-card" aria-label="Contoh rencana perjalanan pasien">
+        <div class="jc-head">
+          <div>
+            <div class="jc-kicker">Rencana perjalanan · contoh</div>
+            <div class="jc-code">RJ-2481</div>
+          </div>
+          <span class="pill pill-held">3 slot ditahan</span>
+        </div>
+
+        <div class="jc-patient">
+          <span class="jc-avatar" aria-hidden="true">SR</span>
+          <div>
+            <div class="jc-name">Pasien demo · Klaten</div>
+            <div class="jc-meta">Rujukan ke RS Pusat · satu pendamping</div>
+          </div>
+        </div>
+
+        <ol class="jc-route">
+          <li class="jc-stop is-ready">
+            <span class="jc-time">08:30</span>
+            <span class="jc-node" aria-hidden="true">
+              <svg class="od-icon i-12"><use href="#i-check"></use></svg>
+            </span>
+            <div class="jc-body">
+              <div class="jc-title">Pendaftaran &amp; lab darah</div>
+              <div class="jc-place">Gedung A · lantai 1</div>
+              <div class="jc-status">
+                <svg class="od-icon i-12" aria-hidden="true"><use href="#i-check"></use></svg>
+                Dokumen siap
+              </div>
+            </div>
+          </li>
+          <li class="jc-stop is-held">
+            <span class="jc-time">11:00</span>
+            <span class="jc-node" aria-hidden="true">
+              <svg class="od-icon i-12"><use href="#i-clock"></use></svg>
+            </span>
+            <div class="jc-body">
+              <div class="jc-title">Poli penyakit dalam</div>
+              <div class="jc-place">Gedung A · lantai 2</div>
+              <div class="jc-status">
+                <svg class="od-icon i-12" aria-hidden="true"><use href="#i-clock"></use></svg>
+                Slot ditahan
+              </div>
+            </div>
+          </li>
+          <li class="jc-stop is-wait">
+            <span class="jc-time">14:00</span>
+            <span class="jc-node" aria-hidden="true"></span>
+            <div class="jc-body">
+              <div class="jc-title">USG abdomen</div>
+              <div class="jc-place">Gedung B · lantai 1</div>
+              <div class="jc-status">
+                <span aria-hidden="true">·</span>
+                Menunggu transport
+              </div>
+            </div>
+          </li>
+        </ol>
+
+        <div class="jc-hold-note">
+          <svg class="od-icon i-14" aria-hidden="true"><use href="#i-clock"></use></svg>
+          <span>Slot ditahan hingga 12:10. Dilepas otomatis jika syarat belum siap.</span>
+        </div>
+
+        <div class="jc-foot">
+          <div>
+            <div class="jc-stat-label">Rencana</div>
+            <div class="jc-stat-value">1 hari kunjungan</div>
+          </div>
+          <div>
+            <div class="jc-stat-label">Dibanding terpisah</div>
+            <div class="jc-stat-value"><em>2 perjalanan</em> dihindari</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="profile section-dark" id="profil">
+    <svg class="profile-route" viewBox="0 0 620 420" aria-hidden="true">
+      <path d="M20 340c120 0 120-240 250-240s130 240 320 240" fill="none" stroke="#8FC9B4" stroke-width="1.2" stroke-dasharray="2 10" stroke-linecap="round"/>
+      <circle cx="20" cy="340" r="4" fill="#D9A441"/>
+      <circle cx="270" cy="100" r="4" fill="#D9A441"/>
+      <circle cx="590" cy="340" r="4" fill="#D9A441"/>
+    </svg>
+    <div class="wrap">
+      <p class="eyebrow">01 — Profil perusahaan</p>
+      <h2 class="section-title">Kami mengelola perjalanan, bukan satu janji temu.</h2>
+
+      <div class="profile-grid">
+        <div class="profile-copy">
+          <p>RujukSekali adalah lapisan koordinasi untuk layanan kesehatan yang saling bergantung. Unit yang kami kelola adalah episode perjalanan pasien: urutan pemeriksaan, konsultasi, dan tindak lanjut yang harus selesai dalam satu rangkaian — bukan daftar janji temu yang berdiri sendiri.</p>
+          <p>Fokus awal kami adalah pasien luar kota yang membutuhkan lebih dari satu layanan non-darurat. Mereka menanggung biaya perjalanan paling besar ketika jadwal tidak selaras, dan paling diuntungkan ketika urutannya disusun bersama.</p>
+        </div>
+
+        <dl class="facts">
+          <div class="fact-row">
+            <dt>Nama</dt>
+            <dd>RujukSekali</dd>
+          </div>
+          <div class="fact-row">
+            <dt>Fokus</dt>
+            <dd>Pasien luar kota dengan 2 layanan atau lebih</dd>
+          </div>
+          <div class="fact-row">
+            <dt>Unit kerja</dt>
+            <dd>Episode perjalanan pasien</dd>
+          </div>
+          <div class="fact-row">
+            <dt>Tahap</dt>
+            <dd>MVP · 1 rumah sakit · 2 layanan non-darurat · koordinator manual</dd>
+          </div>
+          <div class="fact-row">
+            <dt>Model</dt>
+            <dd>Kontrak dengan jaringan layanan</dd>
+          </div>
+          <div class="fact-row">
+            <dt>Kontak</dt>
+            <dd>halo@rujuksekali.id <span style="color:#9DBBB1">(contoh)</span></dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="values">
+        <div class="value">
+          <h3>
+            <svg class="od-icon i-16" aria-hidden="true"><use href="#i-route"></use></svg>
+            Urutan sebelum kecepatan
+          </h3>
+          <p>Layanan yang benar pada urutan yang salah tetap menghasilkan perjalanan ulang.</p>
+        </div>
+        <div class="value">
+          <h3>
+            <svg class="od-icon i-16" aria-hidden="true"><use href="#i-shield"></use></svg>
+            Kesiapan yang terlihat
+          </h3>
+          <p>Dokumen, pendamping, dan transport ditampilkan sebagai status, bukan diasumsikan.</p>
+        </div>
+        <div class="value">
+          <h3>
+            <svg class="od-icon i-16" aria-hidden="true"><use href="#i-users"></use></svg>
+            Satu pemilik perjalanan
+          </h3>
+          <p>Satu koordinator memegang seluruh episode, sehingga tidak ada bagian yang dianggap urusan bagian lain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="masalah">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">02 — Masalah</p>
+          <h2 class="section-title">Jadwal yang tidak selaras memindahkan biaya ke pasien.</h2>
+        </div>
+        <p class="section-lead">Setiap layanan punya kalender sendiri. Tanpa satu pihak yang memeriksa urutan dan ketergantungan, pasien luar kota kembali di hari lain — bukan karena layanannya belum siap, tetapi karena tidak ada yang menyusunnya bersama.</p>
+      </div>
+
+      <div class="pain-grid">
+        <div class="pain">
+          <div class="pain-index">01</div>
+          <h3>Perjalanan berulang</h3>
+          <p>Dua janji temu di dua hari berarti dua kali pulang-pergi, dua kali izin kerja pendamping.</p>
+        </div>
+        <div class="pain">
+          <div class="pain-index">02</div>
+          <h3>Biaya menumpuk</h3>
+          <p>Transport, penginapan, dan waktu tunggu bertambah tanpa menambah nilai layanan.</p>
+        </div>
+        <div class="pain">
+          <div class="pain-index">03</div>
+          <h3>Slot terbuang</h3>
+          <p>Slot yang ditahan lalu batal mendadak tidak kembali ke pasien lain yang membutuhkan.</p>
+        </div>
+      </div>
+
+      <div class="comparison">
+        <div class="compare-card">
+          <div class="compare-head">
+            <div>
+              <div class="compare-label">Cara lama</div>
+            </div>
+            <div class="compare-count"><strong>3</strong><span>perjalanan</span></div>
+          </div>
+          <ul class="trip-list">
+            <li class="trip-row">
+              <span class="trip-day">Hari 1</span>
+              <span class="trip-name">Laboratorium darah</span>
+              <span class="trip-tag">Pulang-pergi</span>
+            </li>
+            <li class="trip-row">
+              <span class="trip-day">Hari 3</span>
+              <span class="trip-name">Konsultasi spesialis</span>
+              <span class="trip-tag">Pulang-pergi</span>
+            </li>
+            <li class="trip-row">
+              <span class="trip-day">Hari 7</span>
+              <span class="trip-name">USG abdomen</span>
+              <span class="trip-tag">Pulang-pergi</span>
+            </li>
+          </ul>
+          <p class="compare-note">Tiga hari, tiga kali menempuh rute yang sama.</p>
+        </div>
+
+        <div class="compare-card is-new">
+          <div class="compare-head">
+            <div>
+              <div class="compare-label">Dengan RujukSekali</div>
+            </div>
+            <div class="compare-count"><strong>1</strong><span>perjalanan</span></div>
+          </div>
+          <ul class="trip-list">
+            <li class="trip-row">
+              <span class="trip-day">08:00</span>
+              <span class="trip-name">Laboratorium darah</span>
+              <span class="trip-tag">Satu hari</span>
+            </li>
+            <li class="trip-row">
+              <span class="trip-day">10:30</span>
+              <span class="trip-name">Konsultasi spesialis</span>
+              <span class="trip-tag">Satu hari</span>
+            </li>
+            <li class="trip-row">
+              <span class="trip-day">13:00</span>
+              <span class="trip-name">USG abdomen</span>
+              <span class="trip-tag">Satu hari</span>
+            </li>
+          </ul>
+          <p class="compare-note">Ilustrasi alur, bukan hasil pengukuran.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cara-kerja">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">03 — Cara kerja</p>
+          <h2 class="section-title">Empat langkah, satu pemilik perjalanan.</h2>
+        </div>
+        <p class="section-lead">Sistem tidak menggantikan penilaian klinis. Ia menyusun urutan, menahan slot, dan menunjukkan apa yang belum siap — sebelum pasien berangkat.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Petakan urutan</h3>
+          <p>Layanan disusun berdasarkan ketergantungan klinis dan operasional: mana yang harus lebih dulu, mana yang bisa berjalan paralel.</p>
+          <span class="step-tag">Urutan</span>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Tahan slot sementara</h3>
+          <p>Slot ditahan dengan batas waktu yang jelas. Penahanan bukan konfirmasi, dan tidak mengunci jadwal selamanya.</p>
+          <span class="step-tag">Penahanan</span>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Periksa kesiapan</h3>
+          <p>Dokumen, jadwal pendamping, dan transport diperiksa sebagai syarat, bukan catatan tambahan di akhir.</p>
+          <span class="step-tag">Ketergantungan</span>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>Konfirmasi atau lepas</h3>
+          <p>Konfirmasi hanya terjadi ketika syarat wajib tersedia. Jika waktu habis, slot dilepas kembali ke antrean.</p>
+          <span class="step-tag">Keputusan</span>
+        </div>
+      </div>
+
+      <div class="policy">
+        <div>
+          <p class="eyebrow">Kebijakan slot</p>
+          <h3>Batas waktu adalah bagian dari desain.</h3>
+        </div>
+        <div class="policy-body">
+          <p>Penahanan yang terlalu lama memindahkan risiko ke pasien lain. Karena itu setiap penahanan punya waktu kedaluwarsa, alasan pelepasan, dan jejak siapa yang memutuskan.</p>
+          <ul class="policy-list">
+            <li>
+              <svg class="od-icon i-14" aria-hidden="true"><use href="#i-check"></use></svg>
+              Slot dilepas otomatis saat batas waktu habis.
+            </li>
+            <li>
+              <svg class="od-icon i-14" aria-hidden="true"><use href="#i-check"></use></svg>
+              Pelepasan dicatat agar slot terbuang dapat diukur, bukan hanya dikeluhkan.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="simulasi">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">04 — Simulasi</p>
+          <h2 class="section-title">Susun satu perjalanan. Lihat apa yang harus siap lebih dulu.</h2>
+        </div>
+        <p class="section-lead">Pilih skenario, tahan slot, lalu tandai ketergantungan penting. Tombol konfirmasi hanya aktif ketika syarat wajib terpenuhi. Semua data di sini fiktif.</p>
+      </div>
+
+      <div class="sim-card" id="simCard">
+        <div class="sim-topbar">
+          <div class="sim-title">
+            <span class="dot" aria-hidden="true"></span>
+            Koordinasi perjalanan
+            <span class="sim-sub">Demo interaktif · batas tahan 3 menit</span>
+          </div>
+          <span class="pill pill-wait" id="simStatus">Belum ditahan</span>
+        </div>
+
+        <div class="sim-body">
+          <div class="sim-controls">
+            <div class="sim-label">
+              <span>Skenario pasien</span>
+              <span class="hint" id="scenarioMeta">2 layanan · 3 titik</span>
+            </div>
+            <div class="scenarios" id="scenarios" role="group" aria-label="Pilih skenario pasien"></div>
+
+            <div class="hold-block" id="holdBlock">
+              <div class="hold-row">
+                <div class="hold-status">
+                  <span class="hold-dot" aria-hidden="true"></span>
+                  <span id="holdStatusText">Slot belum ditahan</span>
+                </div>
+                <span class="hold-time" id="holdTime">—</span>
+              </div>
+              <p class="hold-desc" id="holdDesc">Penahanan bersifat sementara. Slot belum menjadi janji temu.</p>
+              <div class="hold-progress" aria-hidden="true"><i id="holdBar"></i></div>
+              <div class="hold-actions">
+                <button class="btn btn-sm btn-primary" id="holdBtn" type="button">Tahan slot · 3 menit</button>
+                <button class="btn btn-sm btn-ghost" id="releaseBtn" type="button" hidden>Lepas slot</button>
+              </div>
+            </div>
+
+            <div class="sim-label" style="margin-top:16px">
+              <span>Ketergantungan penting</span>
+              <span class="hint" id="depSummary">3 wajib · 1 opsional</span>
+            </div>
+            <div class="deps" id="deps"></div>
+
+            <div class="sim-actions">
+              <button class="btn btn-primary" id="confirmBtn" type="button" disabled>Konfirmasi perjalanan</button>
+              <p class="confirm-hint" id="confirmHint">Tahan slot terlebih dahulu untuk memeriksa ketergantungan.</p>
+            </div>
+
+            <div class="sim-result" id="simResult" hidden>
+              <div class="result-head">
+                <svg class="od-icon i-16" aria-hidden="true"><use href="#i-check"></use></svg>
+                <div>
+                  <h3 id="resultTitle" tabindex="-1">Perjalanan terkonfirmasi</h3>
+                  <div class="result-code" id="resultCode">RJ-0000</div>
+                </div>
+              </div>
+              <p class="result-meta" id="resultMeta">Rencana untuk —</p>
+              <div class="result-actions">
+                <button class="btn btn-sm btn-primary" id="copyBtn" type="button">
+                  <svg class="od-icon i-14" aria-hidden="true"><use href="#i-copy"></use></svg>
+                  Salin ringkasan
+                </button>
+                <button class="btn btn-sm btn-ghost" id="restartBtn" type="button">Ulangi simulasi</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="sim-map">
+            <div class="map-head">
+              <span class="map-title">Peta perjalanan</span>
+              <span class="pill pill-wait" id="mapStatus">Belum ditahan</span>
+            </div>
+
+            <div class="confirm-banner" id="confirmBanner" hidden>
+              <svg class="od-icon i-16" aria-hidden="true"><use href="#i-check"></use></svg>
+              <div>
+                <strong>Semua syarat wajib siap.</strong>
+                <span id="bannerDate">Rencana untuk —</span>
+              </div>
+            </div>
+
+            <ol class="timeline" id="timeline"></ol>
+
+            <div class="map-stats">
+              <div>
+                <div class="map-stat-label">Kunjungan dihindari</div>
+                <div class="map-stat-value"><span id="statAvoid">2</span> perjalanan</div>
+              </div>
+              <div>
+                <div class="map-stat-label">Waktu di rumah sakit</div>
+                <div class="map-stat-value" id="statDuration">± 5 jam</div>
+              </div>
+              <div>
+                <div class="map-stat-label">Titik layanan</div>
+                <div class="map-stat-value"><span id="statPoints">3</span> titik</div>
+              </div>
+            </div>
+            <p class="map-note">Status mengikuti penahanan slot dan syarat wajib. Angka kunjungan dihitung dari jumlah titik dalam skenario demo.</p>
+          </div>
+        </div>
+      </div>
+      <p class="sr-only" id="simAnnouncer" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="section" id="fitur">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">05 — Fitur inti</p>
+          <h2 class="section-title">Yang diikat dalam satu perjalanan.</h2>
+        </div>
+        <p class="section-lead">Enam bagian yang membuat urutan bisa dijalankan, bukan hanya direncanakan di atas kertas.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature-num">01</div>
+          <h3>Urutan layanan</h3>
+          <p>Menghubungkan layanan yang saling bergantung dan menandai mana yang bisa berjalan paralel.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-num">02</div>
+          <h3>Kesiapan dokumen</h3>
+          <p>Status surat rujukan, hasil penunjang, dan persetujuan terlihat sebelum slot dikonfirmasi.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-num">03</div>
+          <h3>Jadwal pendamping</h3>
+          <p>Satu orang, beberapa peran. Ketersediaan pendamping diperiksa pada setiap slot.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-num">04</div>
+          <h3>Transport</h3>
+          <p>Moda dan waktu tempuh menjadi bagian dari rencana, bukan urusan setelah keluar rumah.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-num">05</div>
+          <h3>Penahanan slot</h3>
+          <p>Slot ditahan dengan batas waktu dan dilepas otomatis bila syarat tidak terpenuhi.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-num">06</div>
+          <h3>Ringkasan perjalanan</h3>
+          <p>Satu halaman berbahasa sederhana untuk pasien dan pendamping, siap dibawa pulang.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="dampak">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">06 — Dampak &amp; model</p>
+          <h2 class="section-title">Kami mengukur perjalanan, bukan jumlah janji temu.</h2>
+        </div>
+        <p class="section-lead">Tiga metrik menjadi dasar evaluasi. Halaman ini tidak menampilkan angka hasil karena pengukuran baru dimulai pada pilot.</p>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric">
+          <div class="metric-def">Metrik 01 · Definisi</div>
+          <h3>Perjalanan per episode</h3>
+          <p>Jumlah kunjungan fisik yang dibutuhkan pasien untuk menyelesaikan satu episode layanan. Semakin kecil, semakin baik.</p>
+        </div>
+        <div class="metric">
+          <div class="metric-def">Metrik 02 · Definisi</div>
+          <h3>Pembatalan</h3>
+          <p>Perjalanan yang batal setelah konfirmasi, beserta alasannya: klinis, dokumen, pendamping, atau transport.</p>
+        </div>
+        <div class="metric">
+          <div class="metric-def">Metrik 03 · Definisi</div>
+          <h3>Slot terbuang</h3>
+          <p>Slot yang ditahan lalu dilepas tanpa terisi pasien lain. Diukur bersama lama penahanan.</p>
+        </div>
+      </div>
+
+      <div class="biz">
+        <div>
+          <p class="eyebrow">Arah model</p>
+          <h3>Pendapatan dari kontrak jaringan layanan.</h3>
+        </div>
+        <div>
+          <p>Rumah sakit membayar untuk koordinasi episode, bukan per janji temu. Struktur ini menjaga insentif tetap searah: semakin sedikit perjalanan yang sia-sia, semakin baik hasilnya.</p>
+          <div class="biz-line">kontrak jaringan · bukan biaya per janji temu</div>
+          <p class="biz-note">Nilai kontrak ditentukan bersama pada tahap pilot; halaman ini tidak memuat tarif.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="mvp">
+    <div class="wrap">
+      <div class="mvp-grid">
+        <div>
+          <p class="eyebrow">07 — MVP</p>
+          <h2 class="section-title">Kecil dengan sengaja.</h2>
+          <p class="section-lead" style="margin-top:16px">MVP dibatasi agar batas penahanan slot dan kesiapan dokumen bisa diuji di alur nyata, bukan di atas asumsi.</p>
+          <div class="difficulty">Kesulitan: tinggi</div>
+          <p class="difficulty-note">Bukan karena teknologinya, tetapi karena jadwal, dokumen, dan manusia harus sepakat pada waktu yang sama.</p>
+        </div>
+
+        <div class="scope">
+          <div class="scope-item">
+            <div class="scope-num">01</div>
+            <div>
+              <h3>Satu rumah sakit</h3>
+              <p>Alur internal dulu: pendaftaran, penunjang, poli, dan farmasi dalam satu atap.</p>
+            </div>
+          </div>
+          <div class="scope-item">
+            <div class="scope-num">02</div>
+            <div>
+              <h3>Dua layanan non-darurat</h3>
+              <p>Cukup untuk menguji ketergantungan tanpa menambah beban IGD atau layanan kritis.</p>
+            </div>
+          </div>
+          <div class="scope-item">
+            <div class="scope-num">03</div>
+            <div>
+              <h3>Koordinator manual</h3>
+              <p>Keputusan tetap pada manusia. Sistem hanya menahan slot dan menunjukkan kesiapan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="roadmap">
+        <div class="phase">
+          <div class="phase-label">Fase 0</div>
+          <h4>Uji alur manual</h4>
+          <p>Satu koordinator, catatan sederhana, dan timer. Ukur perjalanan, pembatalan, serta slot terbuang.</p>
+        </div>
+        <div class="phase">
+          <div class="phase-label">Fase 1</div>
+          <h4>Penjadwalan setengah otomatis</h4>
+          <p>Sistem mengusulkan urutan dan menahan slot; koordinator tetap mengonfirmasi.</p>
+        </div>
+        <div class="phase">
+          <div class="phase-label">Fase 2</div>
+          <h4>Jaringan layanan</h4>
+          <p>Urutan lintas fasilitas setelah alur internal stabil dan batas penahanan terbukti aman.</p>
+        </div>
+      </div>
+      <p class="outside">Di luar cakupan MVP: integrasi SIMRS, pembayaran, aplikasi pasien, dan otomasi berbasis AI.</p>
+    </div>
+  </section>
+
+  <section class="section" id="risiko">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">08 — Risiko &amp; validasi</p>
+          <h2 class="section-title">Risiko yang kami ukur, bukan sembunyikan.</h2>
+        </div>
+        <p class="section-lead">Tiga risiko menentukan apakah model ini layak diperluas. Masing-masing punya cara uji yang jelas sebelum pilot.</p>
+      </div>
+
+      <div class="risk-grid">
+        <article class="risk">
+          <span class="risk-tag">Risiko operasional</span>
+          <h3>Slot tertahan terlalu lama</h3>
+          <div class="risk-block">
+            <div class="risk-block-label">Dampak</div>
+            <p>Pasien lain kehilangan slot yang sebenarnya bisa dipakai.</p>
+          </div>
+          <div class="risk-block">
+            <div class="risk-block-label">Cara menguji</div>
+            <p>Bandingkan batas penahanan 15, 30, dan 60 menit; hitung slot terbuang serta waktu tunggu pasien lain.</p>
+          </div>
+        </article>
+        <article class="risk">
+          <span class="risk-tag">Risiko klinis</span>
+          <h3>Prioritas klinis berubah</h3>
+          <div class="risk-block">
+            <div class="risk-block-label">Dampak</div>
+            <p>Urutan yang sudah disusun menjadi tidak relevan di tengah perjalanan.</p>
+          </div>
+          <div class="risk-block">
+            <div class="risk-block-label">Cara menguji</div>
+            <p>Uji alur pelepasan dan penyusunan ulang, lalu catat siapa yang memutuskan serta alasannya.</p>
+          </div>
+        </article>
+        <article class="risk">
+          <span class="risk-tag">Risiko jaringan</span>
+          <h3>Koordinasi antarfasilitas</h3>
+          <div class="risk-block">
+            <div class="risk-block-label">Dampak</div>
+            <p>Dua kalender dan dua aturan membuat janji temu sulit disatukan.</p>
+          </div>
+          <div class="risk-block">
+            <div class="risk-block-label">Cara menguji</div>
+            <p>Mulai dari satu rumah sakit. Lintas fasilitas hanya dibuka setelah alur internal stabil.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="validation">
+        <div>
+          <p class="eyebrow">Pertanyaan validasi utama</p>
+          <p class="validation-quote">Apakah perjalanan yang disusun benar-benar mengurangi kunjungan berulang tanpa menunda layanan penting?</p>
+        </div>
+        <div class="citation">
+          <div class="citation-label">Dasar pemikiran</div>
+          <p>Penjadwalan multi-layanan untuk satu pasien sudah menjadi bidang penelitian operasi layanan kesehatan. Tantangannya bukan membuktikan bahwa urutan bisa disusun, melainkan menjaga kesiapan dan keadilan slot.</p>
+          <p style="margin-top:8px"><a href="https://www.sciencedirect.com/science/article/abs/pii/S2211692320300473" target="_blank" rel="noopener noreferrer">Apergi dkk. (2020), <em>An optimization model for multi-appointment scheduling in an outpatient cardiology department</em> — ScienceDirect</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta section-dark" id="kontak">
+    <div class="wrap cta-grid">
+      <div>
+        <p class="eyebrow">09 — Kolaborasi</p>
+        <h2>Mulai dari satu perjalanan yang benar.</h2>
+        <p>Kami mencari satu rumah sakit, dua layanan non-darurat, dan satu koordinator untuk menguji alur ini pada pasien luar kota yang nyata.</p>
+        <div class="cta-actions">
+          <a class="btn btn-light" href="mailto:halo@rujuksekali.id">
+            <svg class="od-icon i-16" aria-hidden="true"><use href="#i-mail"></use></svg>
+            Ajukan kolaborasi
+          </a>
+          <a class="btn btn-outline-light" href="#simulasi">Jalankan simulasi</a>
+        </div>
+        <p class="cta-note">Alamat surel masih placeholder untuk halaman konsep ini.</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Yang kami cari</h3>
+        <ul class="contact-list">
+          <li>
+            <span class="contact-num">01</span>
+            <span>Satu rumah sakit dengan alur rujukan pasien luar kota.</span>
+          </li>
+          <li>
+            <span class="contact-num">02</span>
+            <span>Dua layanan non-darurat yang saling bergantung.</span>
+          </li>
+          <li>
+            <span class="contact-num">03</span>
+            <span>Satu koordinator yang memegang seluruh episode.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="#top" aria-label="RujukSekali, kembali ke atas">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+            <rect width="40" height="40" rx="11" fill="#0B453C"/>
+            <path d="M9 27c4.2 0 4.2-11 11-11s6.8 11 11 11" fill="none" stroke="#F4F6F1" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="9" cy="27" r="2.4" fill="#D9A441"/>
+            <circle cx="31" cy="27" r="2.4" fill="#D9A441"/>
+            <circle cx="20" cy="16" r="2.7" fill="#F4F6F1"/>
+          </svg>
+          <span>
+            <span class="brand-name">RujukSekali</span>
+            <span class="brand-sub">Koordinasi perjalanan pasien</span>
+          </span>
+        </a>
+        <p class="footer-tagline">Menyatukan layanan menjadi perjalanan yang layak dilakukan.</p>
+      </div>
+      <nav class="footer-links" aria-label="Navigasi footer">
+        <a href="#profil">Profil</a>
+        <a href="#cara-kerja">Cara kerja</a>
+        <a href="#simulasi">Simulasi</a>
+        <a href="#risiko">Risiko</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+    </div>
+    <p class="footer-note">
+      <strong>Halaman konsep.</strong> RujukSekali bukan alat klinis dan tidak menggantikan keputusan tenaga kesehatan. Seluruh pasien, jadwal, dan kode perjalanan pada simulasi bersifat fiktif. Angka kunjungan dihitung dari skenario demo, bukan hasil pengukuran. Kontak dan identitas perusahaan pada halaman ini masih placeholder. © 2026 RujukSekali.
+    </p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  var HOLD_MS = 180000;
+  var $ = function (sel, root) { return (root || document).querySelector(sel); };
+  var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+
+  var scenarios = {
+    a: {
+      name: 'Konsultasi + USG',
+      meta: '2 layanan · 3 titik',
+      duration: '± 5 jam',
+      services: [
+        { time: '09:00', title: 'Poli penyakit dalam', place: 'Gedung A · lantai 2', dur: '45 menit', prep: 'Bawa surat rujukan asli.' },
+        { time: '11:30', title: 'USG abdomen', place: 'Gedung B · lantai 1', dur: '30 menit', prep: 'Puasa 6 jam sebelum pemeriksaan.' },
+        { time: '13:30', title: 'Farmasi & ringkasan', place: 'Gedung A · lantai 1', dur: '20 menit', prep: 'Bawa daftar obat rutin.' }
+      ],
+      deps: [
+        { id: 'rujukan', icon: 'file', label: 'Surat rujukan', detail: 'Dari fasilitas pengirim, ditandatangani dokter.', critical: true },
+        { id: 'pendamping', icon: 'users', label: 'Jadwal pendamping', detail: 'Satu orang mendampingi seluruh hari kunjungan.', critical: true },
+        { id: 'transport', icon: 'bus', label: 'Transport pulang-pergi', detail: 'Tiba 30 menit sebelum slot pertama.', critical: true },
+        { id: 'penunjang', icon: 'flask', label: 'Hasil penunjang', detail: 'Boleh menyusul; tidak menahan konfirmasi.', critical: false }
+      ]
+    },
+    b: {
+      name: 'Saraf + fisioterapi + lab',
+      meta: '3 layanan · 3 titik',
+      duration: '± 7 jam',
+      services: [
+        { time: '08:00', title: 'Lab darah (puasa)', place: 'Gedung A · lantai 1', dur: '20 menit', prep: 'Puasa 8 jam; bawa botol air.' },
+        { time: '10:30', title: 'Poli saraf', place: 'Gedung A · lantai 3', dur: '45 menit', prep: 'Bawa hasil lab dan catatan keluhan.' },
+        { time: '13:30', title: 'Fisioterapi sesi 1', place: 'Gedung C · lantai 2', dur: '45 menit', prep: 'Pakai alas kaki nyaman.' }
+      ],
+      deps: [
+        { id: 'rujukan', icon: 'file', label: 'Surat rujukan', detail: 'Dari dokter pengirim, dengan diagnosis awal.', critical: true },
+        { id: 'pendamping', icon: 'users', label: 'Jadwal pendamping', detail: 'Mendampingi mobilisasi setelah fisioterapi.', critical: true },
+        { id: 'transport', icon: 'bus', label: 'Transport pulang-pergi', detail: 'Kendaraan menunggu hingga sesi terapi selesai.', critical: true },
+        { id: 'alat', icon: 'shield', label: 'Alat bantu jalan', detail: 'Bisa dipinjam di fasilitas; tidak menahan konfirmasi.', critical: false }
+      ]
+    },
+    c: {
+      name: 'Tindakan minor + kontrol',
+      meta: '2 layanan · 3 titik',
+      duration: '± 8 jam',
+      services: [
+        { time: '07:30', title: 'Pendaftaran & tindakan minor', place: 'Gedung B · lantai 2', dur: '60 menit', prep: 'Datang 45 menit lebih awal.' },
+        { time: '11:00', title: 'Observasi pasca tindakan', place: 'Gedung B · lantai 2', dur: '60 menit', prep: 'Pendamping menunggu di ruang tunggu.' },
+        { time: '14:00', title: 'Kontrol & farmasi', place: 'Gedung A · lantai 1', dur: '30 menit', prep: 'Bawa catatan keluhan setelah tindakan.' }
+      ],
+      deps: [
+        { id: 'persetujuan', icon: 'file', label: 'Persetujuan tindakan', detail: 'Ditandatangani pasien atau pendamping.', critical: true },
+        { id: 'pendamping', icon: 'users', label: 'Jadwal pendamping', detail: 'Satu orang menunggu selama observasi.', critical: true },
+        { id: 'transport', icon: 'bus', label: 'Transport pulang-pergi', detail: 'Pasien tidak mengemudi setelah tindakan.', critical: true },
+        { id: 'penunjang', icon: 'flask', label: 'Hasil penunjang', detail: 'Boleh menyusul; tidak menahan konfirmasi.', critical: false }
+      ]
+    }
+  };
+
+  var state = null;
+  var timerId = null;
+  var toastTimer = null;
+
+  function freshState(key) {
+    return {
+      key: key,
+      held: false,
+      expires: 0,
+      expired: false,
+      released: false,
+      confirmed: false,
+      deps: {},
+      code: '',
+      date: '',
+      warned: false
+    };
+  }
+
+  function current() { return scenarios[state.key]; }
+
+  function resetDeps() {
+    state.deps = {};
+    current().deps.forEach(function (dep) { state.deps[dep.id] = false; });
+  }
+
+  function allCriticalReady() {
+    return current().deps.filter(function (dep) { return dep.critical; }).every(function (dep) {
+      return state.deps[dep.id] === true;
+    });
+  }
+
+  function missingCritical() {
+    return current().deps.filter(function (dep) {
+      return dep.critical && !state.deps[dep.id];
+    });
+  }
+
+  function criticalCount() {
+    return current().deps.filter(function (dep) { return dep.critical; }).length;
+  }
+
+  function optionalCount() {
+    return current().deps.filter(function (dep) { return !dep.critical; }).length;
+  }
+
+  function canConfirm() {
+    return state.held && !state.confirmed && allCriticalReady();
+  }
+
+  function formatDuration(ms) {
+    var total = Math.max(0, Math.ceil(ms / 1000));
+    var m = String(Math.floor(total / 60)).padStart(2, '0');
+    var s = String(total % 60).padStart(2, '0');
+    return m + ':' + s;
+  }
+
+  function addDays(date, days) {
+    var copy = new Date(date.getTime());
+    copy.setDate(copy.getDate() + days);
+    return copy;
+  }
+
+  function formatDate(date) {
+    try {
+      return new Intl.DateTimeFormat('id-ID', {
+        weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+      }).format(date);
+    } catch (err) {
+      return date.toDateString();
+    }
+  }
+
+  function toast(message) {
+    var el = $('#toast');
+    if (!el) return;
+    el.textContent = message;
+    el.classList.add('is-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { el.classList.remove('is-visible'); }, 3000);
+  }
+
+  function announce(message) {
+    var el = $('#simAnnouncer');
+    if (!el) return;
+    el.textContent = '';
+    setTimeout(function () { el.textContent = message; }, 40);
+  }
+
+  function clearTimer() {
+    if (timerId) {
+      clearInterval(timerId);
+      timerId = null;
+    }
+  }
+
+  function startTimer() {
+    clearTimer();
+    timerId = setInterval(onTick, 500);
+    onTick();
+  }
+
+  function onTick() {
+    if (!state || !state.held) {
+      clearTimer();
+      return;
+    }
+    var left = state.expires - Date.now();
+    var timeEl = $('#holdTime');
+    var bar = $('#holdBar');
+    if (timeEl) timeEl.textContent = formatDuration(left);
+    if (bar) {
+      var ratio = Math.max(0, Math.min(1, left / HOLD_MS));
+      bar.style.transform = 'scaleX(' + ratio + ')';
+    }
+    if (left <= 30000 && left > 0 && !state.warned) {
+      state.warned = true;
+      announce('Slot akan dilepas dalam tiga puluh detik.');
+    }
+    if (left <= 0) {
+      clearTimer();
+      state.held = false;
+      state.expired = true;
+      renderAll();
+      toast('Slot dilepas karena batas penahanan habis.');
+      announce('Slot dilepas. Batas penahanan habis.');
+    }
+  }
+
+  function buildScenarios() {
+    var wrap = $('#scenarios');
+    if (!wrap) return;
+    wrap.innerHTML = Object.keys(scenarios).map(function (key) {
+      var item = scenarios[key];
+      return '<button class="scenario" type="button" data-key="' + key + '" aria-pressed="false">' +
+        '<span class="scenario-radio" aria-hidden="true"></span>' +
+        '<span class="scenario-text"><strong>' + item.name + '</strong><span>' + item.meta + ' · ' + item.duration + '</span></span>' +
+        '</button>';
+    }).join('');
+  }
+
+  function buildDeps() {
+    var wrap = $('#deps');
+    if (!wrap) return;
+    wrap.innerHTML = current().deps.map(function (dep) {
+      return '<div class="dep" data-dep="' + dep.id + '">' +
+        '<span class="dep-icon" aria-hidden="true"><svg class="od-icon i-14"><use href="#i-' + dep.icon + '"></use></svg></span>' +
+        '<div class="dep-text">' +
+          '<div class="dep-label">' + dep.label + (dep.critical ? '' : ' <span class="dep-optional">Opsional</span>') + '</div>' +
+          '<div class="dep-detail">' + dep.detail + '</div>' +
+        '</div>' +
+        '<button class="dep-toggle" type="button" data-dep="' + dep.id + '" aria-pressed="false" aria-label="Tandai ' + dep.label + ' siap">' +
+          '<svg class="od-icon i-12" aria-hidden="true"><use href="#i-check"></use></svg>' +
+          '<span>Tandai</span>' +
+        '</button>' +
+      '</div>';
+    }).join('');
+  }
+
+  function buildTimeline() {
+    var wrap = $('#timeline');
+    if (!wrap) return;
+    wrap.innerHTML = current().services.map(function (svc) {
+      return '<li class="tl-item">' +
+        '<span class="tl-time">' + svc.time + '</span>' +
+        '<span class="tl-node" aria-hidden="true"><svg class="od-icon i-12"><use href="#i-check"></use></svg></span>' +
+        '<div class="tl-body">' +
+          '<div class="tl-title">' + svc.title + '</div>' +
+          '<div class="tl-meta">' + svc.place + ' · ' + svc.dur + '</div>' +
+          '<div class="tl-prep">' + svc.prep + '</div>' +
+          '<span class="mini" data-chip>Belum ditahan</span>' +
+        '</div>' +
+      '</li>';
+    }).join('');
+  }
+
+  function updateScenarioButtons() {
+    $$('.scenario').forEach(function (btn) {
+      var on = btn.getAttribute('data-key') === state.key;
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+
+  function updateDepButtons() {
+    $$('.dep-toggle').forEach(function (btn) {
+      var id = btn.getAttribute('data-dep');
+      var ready = state.deps[id] === true;
+      var dep = current().deps.filter(function (item) { return item.id === id; })[0];
+      btn.setAttribute('aria-pressed', ready ? 'true' : 'false');
+      btn.disabled = !state.held || state.confirmed;
+      var label = btn.querySelector('span');
+      if (label) label.textContent = ready ? 'Siap' : 'Tandai';
+      btn.setAttribute('aria-label', ready
+        ? dep.label + ' sudah siap, tandai untuk membatalkan'
+        : 'Tandai ' + dep.label + ' siap');
+    });
+  }
+
+  function updateTimeline() {
+    var ready = allCriticalReady();
+    $$('#timeline .tl-item').forEach(function (li) {
+      var chip = li.querySelector('[data-chip]');
+      var cls = 'is-queued';
+      var text = 'Belum ditahan';
+      if (state.confirmed) {
+        cls = 'is-confirmed';
+        text = 'Terkonfirmasi';
+      } else if (state.held) {
+        if (ready) {
+          cls = 'is-ready';
+          text = 'Siap';
+        } else {
+          cls = 'is-held';
+          text = 'Slot ditahan';
+        }
+      } else if (state.expired || state.released) {
+        cls = 'is-off';
+        text = 'Slot dilepas';
+      }
+      li.className = 'tl-item ' + cls;
+      if (chip) chip.textContent = text;
+    });
+  }
+
+  function statusInfo() {
+    if (state.confirmed) return { text: 'Terkonfirmasi', cls: 'pill-confirm' };
+    if (state.held) return { text: 'Slot ditahan', cls: 'pill-held' };
+    if (state.expired) return { text: 'Slot kedaluwarsa', cls: 'pill-wait' };
+    if (state.released) return { text: 'Slot dilepas', cls: 'pill-wait' };
+    return { text: 'Belum ditahan', cls: 'pill-wait' };
+  }
+
+  function updateStatusCopy() {
+    var block = $('#holdBlock');
+    var statusText = $('#holdStatusText');
+    var desc = $('#holdDesc');
+    var holdBtn = $('#holdBtn');
+    var releaseBtn = $('#releaseBtn');
+    var confirmBtn = $('#confirmBtn');
+    var hint = $('#confirmHint');
+    var status = statusInfo();
+
+    if (block) {
+      block.classList.toggle('is-held', state.held);
+      block.classList.toggle('is-confirmed', state.confirmed);
+    }
+
+    if (statusText) {
+      if (state.confirmed) statusText.textContent = 'Perjalanan terkonfirmasi';
+      else if (state.held) statusText.textContent = 'Slot ditahan';
+      else if (state.expired) statusText.textContent = 'Slot kedaluwarsa';
+      else if (state.released) statusText.textContent = 'Slot dilepas';
+      else statusText.textContent = 'Slot belum ditahan';
+    }
+
+    if (desc) {
+      if (state.confirmed) desc.textContent = 'Semua ketergantungan penting terpenuhi. Slot menjadi janji temu.';
+      else if (state.held) desc.textContent = 'Slot ditahan sementara. Konfirmasi hanya setelah syarat wajib siap.';
+      else if (state.expired) desc.textContent = 'Batas penahanan habis. Slot dikembalikan ke antrean pasien lain.';
+      else if (state.released) desc.textContent = 'Anda melepas slot. Slot kembali ke antrean dan dapat ditahan ulang.';
+      else desc.textContent = 'Penahanan bersifat sementara. Slot belum menjadi janji temu.';
+    }
+
+    if (holdBtn) {
+      holdBtn.hidden = state.held || state.confirmed;
+      holdBtn.textContent = (state.expired || state.released) ? 'Tahan ulang · 3 menit' : 'Tahan slot · 3 menit';
+      holdBtn.disabled = state.confirmed;
+    }
+    if (releaseBtn) releaseBtn.hidden = !state.held;
+
+    var mapStatus = $('#mapStatus');
+    if (mapStatus) {
+      mapStatus.textContent = status.text;
+      mapStatus.className = 'pill ' + status.cls;
+    }
+    var simStatus = $('#simStatus');
+    if (simStatus) {
+      simStatus.textContent = status.text;
+      simStatus.className = 'pill ' + status.cls;
+    }
+
+    if (confirmBtn) confirmBtn.disabled = !canConfirm();
+
+    if (hint) {
+      if (state.confirmed) {
+        hint.textContent = 'Perjalanan dikonfirmasi. Ringkasan siap dibagikan.';
+      } else if (!state.held) {
+        hint.textContent = 'Tahan slot terlebih dahulu untuk memeriksa ketergantungan.';
+      } else if (!allCriticalReady()) {
+        var names = missingCritical().map(function (dep) { return dep.label; });
+        hint.textContent = names.length + ' syarat wajib belum siap: ' + names.join(', ') + '.';
+      } else {
+        hint.textContent = 'Semua syarat wajib siap. Perjalanan dapat dikonfirmasi.';
+      }
+    }
+
+    var result = $('#simResult');
+    var banner = $('#confirmBanner');
+    if (result) result.hidden = !state.confirmed;
+    if (banner) banner.hidden = !state.confirmed;
+
+    if (state.confirmed) {
+      var code = $('#resultCode');
+      var meta = $('#resultMeta');
+      var bannerDate = $('#bannerDate');
+      if (code) code.textContent = state.code;
+      if (meta) meta.textContent = 'Rencana untuk ' + state.date + ' · ' + criticalCount() + ' syarat wajib siap · ' + current().services.length + ' titik layanan.';
+      if (bannerDate) bannerDate.textContent = 'Rencana untuk ' + state.date;
+    }
+  }
+
+  function updateStats() {
+    var scenario = current();
+    var avoid = $('#statAvoid');
+    var duration = $('#statDuration');
+    var points = $('#statPoints');
+    var meta = $('#scenarioMeta');
+    var depSummary = $('#depSummary');
+    if (avoid) avoid.textContent = String(scenario.services.length - 1);
+    if (duration) duration.textContent = scenario.duration;
+    if (points) points.textContent = String(scenario.services.length);
+    if (meta) meta.textContent = scenario.meta;
+    if (depSummary) depSummary.textContent = criticalCount() + ' wajib · ' + optionalCount() + ' opsional';
+  }
+
+  function renderAll() {
+    updateScenarioButtons();
+    updateDepButtons();
+    updateTimeline();
+    updateStatusCopy();
+    updateStats();
+
+    var timeEl = $('#holdTime');
+    var bar = $('#holdBar');
+    if (timeEl) timeEl.textContent = state.held ? formatDuration(state.expires - Date.now()) : '—';
+    if (bar) {
+      var ratio = state.held ? Math.max(0, Math.min(1, (state.expires - Date.now()) / HOLD_MS)) : 0;
+      bar.style.transform = 'scaleX(' + ratio + ')';
+    }
+  }
+
+  function selectScenario(key) {
+    if (!scenarios[key] || key === state.key) return;
+    var hadJourney = state.held || state.confirmed;
+    var wasConfirmed = state.confirmed;
+    clearTimer();
+    state = freshState(key);
+    resetDeps();
+    buildDeps();
+    buildTimeline();
+    renderAll();
+    if (wasConfirmed) {
+      toast('Skenario diganti. Konfirmasi sebelumnya dibatalkan.');
+    } else if (hadJourney) {
+      toast('Skenario diganti. Slot sebelumnya dilepas.');
+    }
+    announce('Skenario ' + current().name + ' dipilih.');
+  }
+
+  function holdSlots() {
+    if (state.confirmed) return;
+    clearTimer();
+    state.held = true;
+    state.expired = false;
+    state.released = false;
+    state.warned = false;
+    state.expires = Date.now() + HOLD_MS;
+    startTimer();
+    renderAll();
+    toast('Slot ditahan. Periksa ketergantungan penting.');
+    announce('Slot ditahan selama tiga menit untuk demo.');
+  }
+
+  function releaseSlots() {
+    if (!state.held) return;
+    clearTimer();
+    state.held = false;
+    state.released = true;
+    renderAll();
+    toast('Slot dilepas. Jadwal kembali ke antrean.');
+    announce('Slot dilepas oleh koordinator.');
+  }
+
+  function confirmJourney() {
+    if (!canConfirm()) return;
+    clearTimer();
+    state.confirmed = true;
+    state.held = false;
+    state.code = 'RJ-' + String(Math.floor(1000 + Math.random() * 9000));
+    state.date = formatDate(addDays(new Date(), 4));
+    renderAll();
+    toast('Perjalanan terkonfirmasi untuk ' + state.date + '.');
+    announce('Perjalanan terkonfirmasi. Kode ' + state.code + '.');
+    requestAnimationFrame(function () {
+      var title = $('#resultTitle');
+      if (title) title.focus();
+    });
+  }
+
+  function restartSimulation() {
+    clearTimer();
+    state = freshState(state.key);
+    resetDeps();
+    buildDeps();
+    buildTimeline();
+    renderAll();
+    toast('Simulasi diulang.');
+    announce('Simulasi diulang dengan skenario yang sama.');
+  }
+
+  function buildSummary() {
+    var scenario = current();
+    var lines = [
+      'RujukSekali — ' + state.code,
+      'Rencana kunjungan: ' + state.date,
+      '',
+      scenario.name,
+      ''
+    ];
+    scenario.services.forEach(function (svc) {
+      lines.push(svc.time + '  ' + svc.title + ' — ' + svc.place + ' (' + svc.dur + ')');
+    });
+    lines.push('');
+    lines.push('Syarat wajib siap: ' + criticalCount() + '/' + criticalCount());
+    lines.push('Data simulasi; bukan janji temu nyata.');
+    return lines.join('\n');
+  }
+
+  function copyText(text) {
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.top = '0';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+      document.body.removeChild(ta);
+      toast(ok ? 'Ringkasan perjalanan disalin.' : 'Peramban ini tidak mengizinkan penyalinan.');
+    }
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function () {
+        toast('Ringkasan perjalanan disalin.');
+      }).catch(fallback);
+    } else {
+      fallback();
+    }
+  }
+
+  function closeMenu() {
+    var btn = $('#menuBtn');
+    var nav = $('#mobileNav');
+    if (!btn || !nav) return;
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Buka menu');
+    nav.classList.remove('is-open');
+  }
+
+  function init() {
+    state = freshState('a');
+    resetDeps();
+    buildScenarios();
+    buildDeps();
+    buildTimeline();
+    renderAll();
+
+    var scenarioWrap = $('#scenarios');
+    if (scenarioWrap) {
+      scenarioWrap.addEventListener('click', function (event) {
+        var btn = event.target.closest('.scenario');
+        if (!btn) return;
+        selectScenario(btn.getAttribute('data-key'));
+      });
+    }
+
+    var depWrap = $('#deps');
+    if (depWrap) {
+      depWrap.addEventListener('click', function (event) {
+        var btn = event.target.closest('.dep-toggle');
+        if (!btn || btn.disabled) return;
+        var id = btn.getAttribute('data-dep');
+        state.deps[id] = !state.deps[id];
+        updateDepButtons();
+        updateStatusCopy();
+        updateTimeline();
+        var dep = current().deps.filter(function (item) { return item.id === id; })[0];
+        announce(dep.label + (state.deps[id] ? ' ditandai siap.' : ' ditandai belum siap.'));
+      });
+    }
+
+    var holdBtn = $('#holdBtn');
+    if (holdBtn) holdBtn.addEventListener('click', holdSlots);
+    var releaseBtn = $('#releaseBtn');
+    if (releaseBtn) releaseBtn.addEventListener('click', releaseSlots);
+    var confirmBtn = $('#confirmBtn');
+    if (confirmBtn) confirmBtn.addEventListener('click', confirmJourney);
+    var restartBtn = $('#restartBtn');
+    if (restartBtn) restartBtn.addEventListener('click', restartSimulation);
+    var copyBtn = $('#copyBtn');
+    if (copyBtn) copyBtn.addEventListener('click', function () { copyText(buildSummary()); });
+
+    var menuBtn = $('#menuBtn');
+    var mobileNav = $('#mobileNav');
+    if (menuBtn && mobileNav) {
+      menuBtn.addEventListener('click', function () {
+        var open = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', open ? 'false' : 'true');
+        menuBtn.setAttribute('aria-label', open ? 'Buka menu' : 'Tutup menu');
+        mobileNav.classList.toggle('is-open', !open);
+      });
+      $$('a', mobileNav).forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeMenu();
+      });
+    }
+
+    var header = $('.site-header');
+    if (header) {
+      var onScroll = function () {
+        header.classList.toggle('is-scrolled', window.scrollY > 8);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>

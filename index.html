@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="description" content="RencanaMampu — alat bantu perencanaan pemulangan: memetakan beban tugas perawatan terhadap kapasitas keluarga." />
+<meta name="theme-color" content="#0E5C4A" />
+<title>RencanaMampu — Beban perawatan & kapasitas keluarga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E5C4A'/%3E%3Cpath d='M8 21c0-5 3.6-9 8-9s8 4 8 9' fill='none' stroke='%23F2F7F3' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='12' r='2.6' fill='%23E8C46A'/%3E%3C/svg%3E" />
+</head>
+<body>
+<a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#/pasien" aria-label="RencanaMampu, ke daftar pasien">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="11" fill="currentColor"/>
+          <path d="M9 27c0-6.6 4.9-11.8 11-11.8S31 20.4 31 27" stroke="#F2F7F3" stroke-width="2.6" stroke-linecap="round"/>
+          <circle cx="20" cy="13.4" r="3.1" fill="#E8C46A"/>
+          <path d="M14 27h12" stroke="#8FC9B4" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">RencanaMampu</span>
+        <span class="brand-tag">Beban perawatan × kapasitas keluarga</span>
+      </span>
+    </a>
+
+    <nav class="top-nav" aria-label="Navigasi utama">
+      <a href="#/pasien" data-nav="pasien">Pasien</a>
+      <a href="#/dasbor" data-nav="dasbor">Dasbor</a>
+      <a href="#/pengaturan" data-nav="pengaturan">Pengaturan</a>
+    </nav>
+
+    <div class="header-tools">
+      <span class="service-chip" id="service-chip">Bangsal Penyakit Dalam</span>
+      <label class="role-control">
+        <span class="role-label">Peran (demo)</span>
+        <select id="role-select" aria-label="Peran aktif untuk demo">
+          <option value="perencana">Perencana pemulangan</option>
+          <option value="klinisi">Klinisi penanggung jawab</option>
+          <option value="admin">Admin layanan</option>
+        </select>
+      </label>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="app" tabindex="-1">
+  <noscript>
+    <div class="notice notice-warn">RencanaMampu membutuhkan JavaScript untuk menampilkan pemetaan. Aktifkan JavaScript di peramban Anda.</div>
+  </noscript>
+  <div id="app" aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p><strong>Alat bantu perencanaan, bukan alat klinis.</strong> RencanaMampu tidak mengubah terapi, dosis, atau keputusan klinis. Semua penyesuaian dicatat manual oleh klinisi.</p>
+    <p class="footer-meta">Prototipe MVP · Data demo fiktif · Disimpan lokal di peramban ini · <a href="docs/privasi.md">Catatan privasi</a> · <a href="tests.html">Uji aturan</a></p>
+  </div>
+</footer>
+
+<nav class="bottom-nav" aria-label="Navigasi utama (ponsel)">
+  <a href="#/pasien" data-nav="pasien">
+    <svg class="od-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20c0-3.6 3.6-6.4 8-6.4s8 2.8 8 6.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="7.6" r="3.3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+    <span>Pasien</span>
+  </a>
+  <a href="#/dasbor" data-nav="dasbor">
+    <svg class="od-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m5 14v-7m5 7V8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span>Dasbor</span>
+  </a>
+  <a href="#/pengaturan" data-nav="pengaturan">
+    <svg class="od-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span>Pengaturan</span>
+  </a>
+</nav>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="rules-config.js"></script>
+<script src="js/rules.js"></script>
+<script src="js/data.js"></script>
+<script src="js/store.js"></script>
+<script src="js/views.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
