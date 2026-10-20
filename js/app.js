@@ -93,7 +93,7 @@
         RM.ui.formStart = Date.now();
       }
       if (r.kind === 'keluarga') {
-        S.audit('Membuka ringkasan keluarga', 'tautan terbatas · ' + (r.token || ''));
+        S.audit('Membuka ringkasan keluarga', 'tautan terbatas · ' + String(r.token || '').slice(0, 10) + '…');
       }
       if (r.kind === 'pemetaan') {
         RM.ui.reviewStart = Date.now();

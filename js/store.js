@@ -204,7 +204,7 @@
     },
 
     createFamilyLink: function (pasienId) {
-      const token = 'klg-' + this.getPasien(pasienId).kode.toLowerCase().replace(/[^a-z0-9]/g, '') + '-' + Math.random().toString(36).slice(2, 6);
+      const token = 'klg-' + this.getPasien(pasienId).kode.toLowerCase().replace(/[^a-z0-9]/g, '') + '-' + Array.from(crypto.getRandomValues(new Uint32Array(2)), function (n) { return n.toString(36); }).join('');
       this.state.familyLinks[token] = { pasienId: pasienId, dibuat: F.today(), kedaluwarsa: F.addDays(3) };
       this.audit('Membuat tautan keluarga berkedaluwarsa', this.getPasien(pasienId).kode + ' · berlaku 3 hari');
       this.save();

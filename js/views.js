@@ -574,7 +574,7 @@
       '<div class="card">' +
         '<div class="card-head"><div><h2>Input cepat dari templat</h2><p>Ketuk templat untuk menambah tugas, lalu edit bila perlu.</p></div></div>' +
         '<div class="template-rail">' + RM.demo.templates.map(function (tpl) {
-          return '<button type="button" class="template-btn" data-action="apply-template" data-id="' + id + '" data-template="' + tpl.id + '"><span class="plus">+</span>' + e(tpl.label) + '</button>';
+          return '<button type="button" class="template-btn" data-action="apply-template" data-id="' + id + '" data-template="' + e(tpl.id) + '"><span class="plus">+</span>' + e(tpl.label) + '</button>';
         }).join('') + '</div>' +
         '<div class="task-summary" style="margin-top:8px"><span><strong>' + tasks.length + '</strong> tugas</span><span><strong>' + F.menit(totalMenit) + '</strong> tuntutan per hari</span><span><strong>' + F.rupiah(totalBiaya) + '</strong> biaya bahan per bulan</span></div>' +
       '</div>' +
@@ -593,8 +593,8 @@
               (t.butuhDigital ? '<span class="badge badge-neutral">' + icon('phone') + RM_CONFIG.detailDigital[t.butuhDigital] + '</span>' : '') +
               (t.bolehDisederhanakan ? '<span class="badge badge-info">Boleh disederhanakan</span>' : '') +
             '</div></div>' +
-            '<div class="t-actions"><button type="button" class="icon-btn" data-action="task-edit" data-id="' + id + '" data-task="' + t.id + '" aria-label="Edit ' + e(t.nama) + '">' + icon('edit') + '</button>' +
-            '<button type="button" class="icon-btn" data-action="task-delete" data-id="' + id + '" data-task="' + t.id + '" aria-label="Hapus ' + e(t.nama) + '">' + icon('trash') + '</button></div></div>';
+            '<div class="t-actions"><button type="button" class="icon-btn" data-action="task-edit" data-id="' + id + '" data-task="' + e(t.id) + '" aria-label="Edit ' + e(t.nama) + '">' + icon('edit') + '</button>' +
+            '<button type="button" class="icon-btn" data-action="task-delete" data-id="' + id + '" data-task="' + e(t.id) + '" aria-label="Hapus ' + e(t.nama) + '">' + icon('trash') + '</button></div></div>';
         }).join('') + '</div>' : '<div class="empty-state"><div class="empty-icon">' + icon('pill') + '</div><h3>Belum ada tugas</h3><p>Gunakan templat di atas. Input cepat membuat pengisian satu pasien selesai jauh di bawah 15 menit.</p></div>') +
       '</div>' +
     '</section>';
@@ -772,7 +772,7 @@
 
       (options.length ? '<div><p class="field-label" style="margin-bottom:8px">Opsi yang relevan</p><div class="options-grid">' +
         options.map(function (o) {
-          return '<label class="option-card"><input type="checkbox" name="opsi" value="' + o.id + '" form="' + formId + '"' + (dec && (dec.opsi || []).includes(o.id) ? ' checked' : '') + (optionsLocked ? ' disabled' : '') + ' />' +
+          return '<label class="option-card"><input type="checkbox" name="opsi" value="' + e(o.id) + '" form="' + formId + '"' + (dec && (dec.opsi || []).includes(o.id) ? ' checked' : '') + (optionsLocked ? ' disabled' : '') + ' />' +
             '<span><span class="opt-label">' + e(o.label) + '</span><span class="opt-desc">' + e(o.deskripsi) + '</span><span class="opt-jenis">' + jenisBadge(o.jenis) + '</span></span></label>';
         }).join('') + '</div><p class="help" style="margin-top:8px">Opsi hanya berlaku bila klinisi menyimpan keputusan. Sistem tidak mengubah terapi.</p></div>'
         : '<p class="help">Belum ada opsi pada katalog untuk dimensi ini. Konflik dapat dicatat sebagai tidak terselesaikan.</p>') +
@@ -925,7 +925,7 @@
           '<div class="form-section"><div class="form-section-title">Tugas yang benar-benar dijalankan</div>' +
             '<p class="form-section-help">Centang tugas yang benar-benar berjalan minimal sebagian besar waktu. Jangan menilai keluarga — catat kenyataannya.</p>' +
             '<div class="stack-2">' + (r.tasks.length ? r.tasks.map(function (t) {
-              return '<label class="followup-task"><input type="checkbox" name="tugas" value="' + t.id + '"' + (checked.includes(t.id) ? ' checked' : '') + ' />' +
+              return '<label class="followup-task"><input type="checkbox" name="tugas" value="' + e(t.id) + '"' + (checked.includes(t.id) ? ' checked' : '') + ' />' +
                 '<span><strong>' + e(t.nama) + '</strong><span class="small muted" style="display:block">' + e(taskFrekuensi(t)) + '</span></span></label>';
             }).join('') : '<p class="small muted">Belum ada tugas yang tercatat.</p>') + '</div>' +
           '</div>' +
@@ -1092,7 +1092,7 @@
                   const dim = RM_CONFIG.dimensi.find(function (x) { return x.id === d; });
                   return '<span class="badge badge-neutral">' + e(dim ? dim.short : (d === 'beban' ? 'Beban' : d)) + '</span>';
                 }).join('') + '</div></div>' +
-                '<label class="switch"><input type="checkbox" data-action="toggle-opsi" data-opsi="' + o.id + '"' + (o.aktif === false ? '' : ' checked') + (canEdit ? '' : ' disabled') + ' /><span>' + (o.aktif === false ? 'Nonaktif' : 'Aktif') + '</span></label></div>';
+                '<label class="switch"><input type="checkbox" data-action="toggle-opsi" data-opsi="' + e(o.id) + '"' + (o.aktif === false ? '' : ' checked') + (canEdit ? '' : ' disabled') + ' /><span>' + (o.aktif === false ? 'Nonaktif' : 'Aktif') + '</span></label></div>';
             }).join('') +
           '</div>' +
         '</div>' +
