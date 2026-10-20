@@ -326,7 +326,6 @@
     const draft = RM.ui.draft || (RM.ui.draft = blankDraft(id));
     const current = Math.max(0, Math.min(4, step || 0));
     const errors = RM.ui.formErrors || [];
-    const isLater = current > 0;
 
     return '<section class="page">' +
       '<nav class="breadcrumb"><a href="#/pasien">Pasien</a><span class="sep">/</span><a href="#/pasien/' + id + '">' + e(p.kode) + '</a><span class="sep">/</span><span>Profil kapasitas</span></nav>' +

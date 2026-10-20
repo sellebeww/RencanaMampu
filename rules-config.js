@@ -109,7 +109,7 @@
     }
   ];
 
-  RM_CONFIG = {
+  window.RM_CONFIG = {
     versi: '1.0.0',
     layanan: 'Bangsal Penyakit Dalam',
     hariKedaluwarsaData: 14,
