@@ -1,201 +1,146 @@
+<div align="center">
+
 # RencanaMampu
 
-MVP aplikasi web untuk membantu tenaga kesehatan menemukan bagian rencana perawatan yang **sulit dijalankan keluarga** sebelum pasien pulang. Aplikasi memetakan tuntutan tugas terhadap kapasitas keluarga, menampilkan konflik beserta alasannya, lalu mencatat keputusan klinisi: menyesuaikan rencana atau menambah dukungan.
+**Rencana pulang yang benar-benar sanggup dijalankan keluarga.**
 
-> **Alat bantu perencanaan, bukan alat klinis.** RencanaMampu tidak mengubah dosis, menyarankan terapi, atau menggantikan keputusan klinisi. Semua penyesuaian dicatat manual oleh klinisi.
+Alat bantu perencanaan pemulangan pasien: memetakan beban tugas perawatan di rumah terhadap kapasitas nyata keluarga, menunjukkan di mana keduanya berbenturan, lalu mencatat keputusan klinisi untuk menyesuaikan rencana atau menambah dukungan.
 
-## Cara menjalankan
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-35%20uji-6E9F18?logo=vitest&logoColor=white)
+![Tanpa backend](https://img.shields.io/badge/backend-tidak%20perlu-8E0F33)
+![axe](https://img.shields.io/badge/axe%20WCAG%202.2%20AA-0%20pelanggaran-0E5C4A)
 
-Prototipe berupa HTML/CSS/JavaScript tanpa build step. Dua pilihan:
+![Daftar pasien dan kesiapan pulang](docs/screenshots/daftar-pasien.jpg)
 
-1. **Langsung**: buka `index.html` di peramban modern (Chrome, Edge, Safari, Firefox). Data tersimpan di `localStorage` peramban.
-2. **Disarankan** (agar `localStorage` dan tautan keluarga berperilaku konsisten):
+</div>
 
-   ```bash
-   cd <folder-proyek>
-   npm run dev          # Node 18+, tanpa npm install; port lain: PORT=3000 npm run dev
-   # buka http://localhost:8080
-   ```
+> [!IMPORTANT]
+> **Alat bantu perencanaan, bukan alat klinis.** RencanaMampu tidak mengubah dosis, tidak menyarankan terapi, dan tidak menggantikan keputusan klinisi. Prototipe ini memakai **data fiktif** dan menyimpan data di peramban tanpa enkripsi.
 
-   Alternatif tanpa Node: `python3 -m http.server 8080`.
+## Masalahnya
 
-Halaman uji aturan: `http://localhost:8080/tests.html` (35 uji, tanpa server).
+Rencana pulang sering lengkap secara klinis, tetapi gagal di rumah: insulin dua kali sehari padahal tidak ada kulkas, kontrol empat kali sebulan padahal ongkos ojek melebihi kemampuan, perawatan luka terlatih padahal pendamping bekerja shift. Benturan seperti ini biasanya baru ketahuan saat pasien kembali dirawat.
 
-Tidak perlu `npm install`, database, atau kunci API.
+RencanaMampu membuat benturan itu terlihat **sebelum** pasien pulang, lengkap dengan alasan dan angkanya, supaya tim bisa memilih: sederhanakan rencana, tambah dukungan, atau terima risikonya secara sadar.
 
-## Peran demo
+## Fitur utama
 
-Gunakan menu **Peran (demo)** di kanan atas:
+| | Fitur | Yang dilakukan |
+|---|---|---|
+| 🧭 | **Profil kapasitas keluarga** | Formulir percakapan 5 langkah (± 5 menit): pendamping dan jam nyata mereka, transportasi, kemampuan biaya, kondisi rumah, sarana digital. Persetujuan dicatat lebih dulu, bisa disimpan sebagian, dan setiap simpan menjadi versi bertanggal. |
+| 💊 | **Tugas perawatan dari templat** | 12 templat sekali ketuk (insulin, perawatan luka, NGT, kontrol, diet, mobilisasi, dll.), lalu sesuaikan frekuensi, durasi, keterampilan, biaya, dan tingkat kritis. |
+| 🧩 | **Matriks tugas × 7 dimensi** | Waktu, keterampilan, pendamping, transportasi, biaya, alat & rumah, digital. Setiap sel *Sesuai / Perhatian / Konflik* selalu memakai ikon dan teks, bukan warna saja. |
+| 🔎 | **Konflik yang bisa ditelusuri** | 8 aturan deterministik, tanpa AI. Setiap temuan menampilkan alasan berbahasa sederhana, nilai aktual vs ambang, dan `ruleId`, diurutkan dari tugas paling kritis. |
+| ✅ | **Keputusan klinisi** | *Rencana disesuaikan · Dukungan ditambah · Diterima dengan risiko · Tidak bisa diselesaikan*, dengan opsi dari katalog layanan. Pemetaan dihitung ulang dan menampilkan **sebelum vs sesudah**. |
+| 🖨️ | **Ringkasan untuk keluarga** | Satu halaman bahasa awam, siap **Cetak / Simpan PDF**. Temuan yang belum beres tetap dicantumkan, tidak disembunyikan. Ada juga **tautan keluarga** hanya-baca yang kedaluwarsa dalam 3 hari. |
+| 📅 | **Tindak lanjut hari 7 & 30** | Tugas yang benar-benar dijalankan, kendala nyata, skor beban 1–5 dibanding skor awal, dan rawat ulang tak terencana. |
+| 📊 | **Dasbor evaluasi** | Konflik per dimensi, persentase temuan yang berujung perubahan layanan, alasan tidak terselesaikan, beban sebelum/sesudah, waktu pengisian, dan umpan balik klinisi. |
+| ⚙️ | **Pengaturan layanan** | Semua ambang dan katalog opsi di satu tempat, bisa diubah admin, plus log audit akses dan perubahan. |
+| 👥 | **Tiga peran demo** | Perencana, klinisi, dan admin dengan hak berbeda (simulasi alur, bukan autentikasi). |
+
+<table>
+<tr>
+<td width="68%"><img src="docs/screenshots/pemetaan.jpg" alt="Matriks pemetaan tugas terhadap tujuh dimensi kapasitas" /></td>
+<td width="32%"><img src="docs/screenshots/ponsel.jpg" alt="Detail pasien di ponsel" /></td>
+</tr>
+<tr>
+<td align="center"><sub>Matriks tugas × dimensi</sub></td>
+<td align="center"><sub>Responsif sampai lebar 320px</sub></td>
+</tr>
+</table>
+
+![Dasbor evaluasi layanan](docs/screenshots/dasbor.jpg)
+
+## Coba dalam satu menit
+
+Butuh **Node 20.19+**. Tidak perlu database atau kunci API.
+
+```bash
+git clone https://github.com/sellebeww/RencanaMampu.git
+cd RencanaMampu
+npm install
+npm run dev          # http://localhost:5173
+```
+
+Alamat polos membuka **profil produk**; tombol **Buka aplikasi** masuk ke daftar pasien. Pilih peran di kanan atas:
 
 | Peran | Bisa melakukan |
 |---|---|
-| Perencana pemulangan | Mengisi profil kapasitas, mengelola tugas, melihat pemetaan, membuat tautan keluarga |
-| Klinisi penanggung jawab | Semua di atas + mencatat keputusan konflik + umpan balik |
-| Admin layanan | Mengubah ambang, mengaktifkan/menonaktifkan opsi, mengatur ulang data demo |
+| **Perencana** pemulangan | Mengisi profil kapasitas, mengelola tugas, melihat pemetaan, membuat tautan keluarga, mengisi tindak lanjut |
+| **Klinisi** penanggung jawab | Semua di atas, ditambah mencatat keputusan konflik dan umpan balik |
+| **Admin** layanan | Mengubah ambang, mengaktifkan/menonaktifkan opsi katalog, mengatur ulang data demo |
 
-Pembatasan peran di UI adalah **simulasi alur**, bukan kontrol keamanan. Backend belum ada.
+Pasien yang menarik untuk dicoba: **RM-077** (konflik terbanyak), **RM-014** (konflik biaya yang tidak bisa diselesaikan), **RM-021** (sudah ada tindak lanjut), **RM-102** (belum punya profil).
 
-## Alur 15 menit
+| Perintah | Fungsi |
+|---|---|
+| `npm run dev` | Server dev dengan hot reload |
+| `npm test` | 35 uji mesin aturan (Vitest) |
+| `npm run typecheck` | `tsc --strict`, tanpa emit |
+| `npm run build` | Typecheck + build statis ke `dist/` (bisa di-host di subfolder mana pun) |
+| `npm run preview` | Sajikan `dist/` secara lokal |
 
-1. **Daftar pasien** → pilih pasien (10 keluarga fiktif).
-2. **Profil kapasitas** — formulir percakapan 5 langkah, ± 5 menit, bisa disimpan sebagian (`Simpan & lanjutkan nanti`). Persetujuan dicatat lebih dulu.
-3. **Tugas perawatan** — tambah dari 12 templat (insulin, luka, NGT, kontrol, diet, mobilisasi, dll.), lalu sesuaikan.
-4. **Pemetaan** — matriks tugas × 7 dimensi, konflik diurutkan berdasarkan kritis tugas lalu keparahan, alasan + angka + `ruleId`.
-5. **Keputusan klinisi** — rencana disesuaikan / dukungan ditambah / diterima dengan risiko / tidak bisa diselesaikan. Pemetaan dihitung ulang; muncul “sebelum vs sesudah”.
-6. **Ringkasan keluarga** — satu halaman bahasa sederhana, siap **Cetak / Simpan PDF** lewat dialog cetak peramban.
-7. **Tindak lanjut hari 7 & 30** — tugas yang benar-benar dijalankan, kendala, skor beban 1–5, rawat ulang.
-8. **Dasbor** — konflik per dimensi, persentase yang berujung perubahan layanan, konflik tak terselesaikan, beban sebelum/sesudah, waktu pengisian, umpan balik klinisi.
+Uji aturan juga bisa dibuka di peramban lewat `/tests.html`.
+
+## Alur kerja satu pasien (± 15 menit)
+
+```
+Daftar pasien → Profil kapasitas → Tugas perawatan → Pemetaan & keputusan → Ringkasan keluarga → Tindak lanjut 7/30 → Dasbor
+                    ± 5 menit          ± 3 menit          ± 5 menit           cetak / tautan       pascapulang
+```
 
 ## Aturan konflik
 
-Semua ambang berada di **`rules-config.js`** dan dapat diubah dari halaman **Pengaturan** (sebagai admin). Mesin berada di `js/rules.js` — fungsi murni, deterministik, tanpa AI.
+Semua ambang ada di [`src/config.ts`](src/config.ts) dan dapat diubah dari halaman **Pengaturan**. Mesin aturan [`src/rules.ts`](src/rules.ts) berupa fungsi murni dan deterministik.
 
 | Kode | Aturan | Tingkat |
 |---|---|---|
-| R1 | Total tuntutan tugas harian > jam pendamping tersedia pada hari itu, atau melewati batas jam layanan | konflik; perhatian bila ≥ 85% atau melewati batas |
+| R1 | Total tuntutan tugas harian > jam pendamping tersedia, atau melewati batas jam layanan | konflik; perhatian bila ≥ 85% |
 | R2 | Tugas “terlatih” tanpa pendamping dengan keterampilan sejenis; literasi terbatas untuk tugas dasar | konflik / perhatian |
-| R3 | Tugas butuh pendamping, tetapi hanya ada pendamping yang bekerja pada slot itu / tidak ada pendamping | perhatian / konflik |
-| R4 | Tidak ada moda transportasi, atau menit perjalanan kontrol/bulan > ambang, atau pasien tidak bisa sendiri tanpa pendamping | konflik / perhatian |
+| R3 | Tugas butuh pendamping, tetapi pendamping bekerja pada slot itu atau tidak ada | perhatian / konflik |
+| R4 | Tidak ada transportasi, menit perjalanan kontrol/bulan > ambang, atau pasien tidak bisa pergi sendiri | konflik / perhatian |
 | R5 | Total biaya tugas + transport/bulan > kemampuan keluarga | konflik; perhatian bila ≥ 85% |
 | R6 | Syarat rumah (listrik, kulkas, air, ruang) tidak tersedia | konflik |
 | R7 | Tugas butuh ponsel/WhatsApp/video call yang tidak tersedia | konflik |
 | R8 | Jumlah tugas harian > ambang beban kumulatif | perhatian |
-| — | Data kapasitas > 14 hari | peringatan + tombol perbarui |
+| — | Data kapasitas lebih dari 14 hari | peringatan + ajakan perbarui |
 
-Setiap temuan memuat: tugas terdampak, dimensi, tingkat, alasan berbahasa Indonesia, nilai aktual vs ambang, dan `ruleId` yang dapat ditelusuri.
-
-### Efek keputusan
-
-Opsi katalog membawa efek terstruktur (mis. kunjungan rumah menghapus kebutuhan transport; penggabungan jadwal memotong frekuensi kontrol). Efek **hanya** diterapkan bila klinisi menyimpan keputusan `sesuaikan` atau `dukungan`. Status `risiko` dan `tidak_selesai` tidak mengubah data.
+Opsi katalog membawa efek terstruktur (mis. kunjungan rumah menghapus kebutuhan transport; gabung jadwal memotong frekuensi kontrol). Efek **hanya** diterapkan setelah klinisi menyimpan keputusan *sesuaikan* atau *dukungan*. Status *risiko* dan *tidak bisa diselesaikan* tidak mengubah data.
 
 ## Data demo
 
-10 keluarga fiktif (`js/data.js`) dengan variasi:
+10 keluarga fiktif ([`src/data.ts`](src/data.ts)) mencakup kapasitas cukup, satu konflik, banyak konflik, dan pasien tanpa profil; konflik di semua dimensi; data kedaluwarsa dan draf; keputusan tersimpan; serta tindak lanjut hari 7/30. Kode `RM-xxx` adalah pseudonim; tidak ada nama pasien nyata.
 
-- kapasitas cukup, satu konflik, banyak konflik, dan pasien tanpa profil;
-- konflik waktu, keterampilan, pendamping, transportasi, biaya, alat, digital, beban kumulatif;
-- data kapasitas kedaluwarsa (22 hari) dan draf profil;
-- keputusan tersimpan: penyesuaian jadwal (RM-021), konflik tidak terselesaikan (RM-014), risiko diterima (RM-046);
-- tindak lanjut hari 7/30 untuk dua pasien (RM-021, RM-046).
+## Teknologi & struktur
 
-Akun demo tidak memakai nama pasien nyata. Kode `RM-xxx` adalah pseudonim.
-
-## Struktur berkas
+TypeScript (strict) tanpa framework UI, dibangun dengan Vite dan diuji dengan Vitest. Tampilan dirender sebagai string HTML dengan delegasi event; data disimpan berversi di `localStorage`.
 
 ```
-index.html            entri aplikasi + router hash
-styles.css            design system, layout responsif, gaya cetak
-rules-config.js       SEMUA ambang + katalog opsi (satu tempat)
-tests.html            halaman unit test
-js/rules.js           mesin aturan murni + format angka/tanggal
-js/data.js            10 keluarga fiktif + 12 templat tugas
-js/store.js           localStorage berversi, audit, consent, tautan keluarga
-js/views.js           tampilan daftar, pasien, formulir, tugas, pemetaan, cetak, dasbor, pengaturan
-js/app.js             router, delegasi event, validasi formulir
-scripts/dev-server.js server statis lokal untuk `npm run dev` (tanpa dependensi)
-js/rules.test.js      35 unit test aturan
-docs/schema.sql       usulan skema PostgreSQL
-docs/privasi.md       privasi, consent, batas kepatuhan
-docs/audit/           laporan audit 2026-10-20, tindakan manual, skrip verifikasi (verify/)
+index.html          aplikasi (router hash)          src/app.ts        router, event, validasi formulir
+profil.html         profil produk / landing         src/views.ts      semua tampilan
+styles.css          design system + gaya cetak      src/rules.ts      mesin aturan + format angka/tanggal
+tests.html          uji aturan di peramban          src/config.ts     ambang + katalog opsi
+docs/schema.sql     usulan skema PostgreSQL         src/store.ts      penyimpanan, audit, consent, tautan keluarga
+docs/privasi.md     privasi & batas kepatuhan       src/data.ts       10 keluarga + 12 templat
+docs/pilot.md       protokol pilot & metrik         src/types.ts      tipe domain
+docs/audit/         laporan audit + skrip verifikasi
 ```
 
-## Keamanan prototipe
+## Aksesibilitas & keamanan
 
-- `index.html` dan `tests.html` memasang Content-Security-Policy lewat `<meta>`: skrip hanya dari file lokal, tanpa skrip inline, tanpa koneksi jaringan selain Google Fonts. Jangan menambah `<script>` inline atau atribut `onclick`; pakai delegasi event di `js/app.js`.
-- Semua teks dinamis dirender lewat helper `e()` di `js/views.js`. Pakai helper itu untuk setiap nilai baru, termasuk di atribut.
-- Data disimpan **tanpa enkripsi** di `localStorage`, dan peran hanya simulasi. Gunakan hanya data fiktif. Lihat `docs/audit/MANUAL_ACTIONS.md`.
+- **Aksesibilitas:** diuji dengan axe-core (WCAG 2.2 A/AA, 0 pelanggaran) di lebar 390px dan 1280px. Status tidak pernah bergantung pada warna saja; ada navigasi keyboard, *skip link*, dan cincin fokus yang jelas; animasi mati bila pengguna memilih *kurangi gerakan*.
+- **Content-Security-Policy** lewat `<meta>`: skrip hanya dari berkas lokal, tanpa skrip inline, tanpa koneksi jaringan selain Google Fonts.
+- **Escaping:** semua teks dinamis lewat helper `e()`; skrip verifikasi menguji payload XSS di 68 rute.
+- **Privasi:** consent per profil, log audit, dan tautan keluarga berkedaluwarsa yang tidak membuka data kapasitas rinci. Lihat [`docs/privasi.md`](docs/privasi.md).
 
-## Asumsi dan penyimpangan dari brief
+## Batasan prototipe
 
-1. **Stack**: brief menyarankan Next.js + PostgreSQL + Prisma + Zod. Runtime ini menghasilkan artefak statis, sehingga prototipe dibangun dengan HTML/CSS/JS modular tanpa build step. Skema PostgreSQL disertakan di `docs/schema.sql` untuk porting. Yang belum ada: server, database, autentikasi, enkripsi, API.
-2. **PDF**: memakai dialog cetak peramban (Cetak → Simpan sebagai PDF), bukan pustaka PDF server. Tata letak A4 sudah disiapkan.
-3. **Validasi**: validasi formulir ditulis manual; Zod belum dipakai karena tidak ada runtime Node di aplikasi.
-4. **AI fase 2**: tidak diimplementasikan dan tidak ada panggilan jaringan. Sesuai brief, default mati.
-5. **Peran**: dipilih lewat menu demo; bukan autentikasi.
-6. **Waktu pengisian**: diukur dari lama formulir terbuka sampai disimpan, disimpan pada `meta`; angka awal pada data demo adalah contoh.
-7. **Ambang awal** (3 jam, 240 menit/bulan, 7 tugas) adalah asumsi, bukan norma klinis. Ubah di Pengaturan sebelum pilot.
-8. **Tautan keluarga** hanya-baca dan berkedaluwarsa 3 hari (dibuat saat tombol ditekan). Keputusan apakah keluarga boleh mengisi sendiri masih terbuka.
+- Belum ada backend, database tersentral, autentikasi nyata, enkripsi at-rest, maupun API. Peran hanya simulasi.
+- PDF dibuat lewat dialog cetak peramban, bukan di server.
+- Belum ada penghapusan/ekspor data dan pencabutan tautan dari UI.
+- Ambang awal (3 jam, 240 menit/bulan, 7 tugas) adalah asumsi, bukan norma klinis.
+- Belum ada uji lapangan dan validasi klinis.
 
-## Metrik dan definisi
-
-- **Konflik terdeteksi**: temuan aktif pada profil tanpa efek keputusan (baseline), dihitung per temuan, bukan per pasien.
-- **Berujung perubahan layanan**: keputusan `sesuaikan` atau `dukungan` ÷ temuan terdeteksi. Satu temuan bisa menghasilkan satu keputusan.
-- **Tidak terselesaikan**: temuan yang masih aktif tanpa keputusan, atau diputuskan `tidak_selesai`, ÷ temuan terdeteksi.
-- **Tuntas dengan perubahan**: keputusan perubahan yang membuat temuan hilang dari pemetaan.
-- **Masih berjalan**: temuan yang masih aktif meski sudah ada keputusan (mis. perhatian tersisa).
-- **Beban keluarga**: skor 1–5 dari keluarga pada profil awal, hari 7, dan hari 30.
-- **Tugas dijalankan**: jumlah tugas yang dicentang pada tindak lanjut ÷ total tugas pada isian.
-- **Waktu pengisian / tinjauan**: rata-rata menit dari sesi yang tersimpan.
-- **Umpan balik klinisi**: satu pertanyaan 1–5 di akhir tinjauan tiap pasien.
-
-Dengan 10 keluarga, angka ini untuk pembelajaran alur — bukan bukti efektivitas.
-
-## Protokol uji coba 10 keluarga
-
-**Tujuan:** menguji apakah temuan konflik menghasilkan perubahan layanan yang **berguna**, bukan menambah formulir.
-
-**Persiapan (H-7 hingga H-1)**
-- Pilih satu bangsal/ruang rawat dengan 10 pasien rencana pulang dalam 2–3 minggu.
-- Tunjuk 2 perencana, 1–2 klinisi, 1 admin; sepakati ambang layanan di halaman Pengaturan.
-- Siapkan alur consent dan kanal bantuan; gunakan data fiktif untuk latihan 2 pasien.
-- Sepakati definisi “perubahan layanan”: perubahan jadwal, penambahan dukungan, rujukan, atau alat baru.
-
-**Pelaksanaan (per pasien)**
-1. Perencana mengisi profil kapasitas bersama keluarga (target ≤ 5 menit; catat bila lebih).
-2. Perencana menambahkan tugas dari templat (target total ≤ 15 menit).
-3. Klinisi meninjau konflik, memilih keputusan, menulis catatan. Catat waktu tinjauan.
-4. Ringkasan dicetak/disimpan PDF dan diberikan ke keluarga.
-5. Hari 7 dan 30: perencana mengisi tindak lanjut (tugas dijalankan, kendala, beban, rawat ulang).
-6. Klinisi mengisi satu pertanyaan umpan balik.
-
-**Pertanyaan validasi utama**
-> Apakah temuan konflik menghasilkan perubahan layanan yang berguna bagi pasien/keluarga?
-
-Pertanyaan pendukung:
-1. Apakah ada konflik yang terlewat atau terasa tidak relevan?
-2. Apakah alasan konflik dapat dipahami keluarga tanpa penjelasan tambahan?
-3. Apakah rekomendasi dukungan benar-benar tersedia di layanan?
-4. Berapa waktu nyata yang dipakai — apakah terasa seperti formulir tambahan?
-5. Apakah ringkasan cetak dipakai di rumah (atau hanya disimpan)?
-
-**Ambang keberhasilan yang disarankan**
-- ≥ 30% temuan berujung perubahan rencana/dukungan yang tercatat.
-- Median waktu satu pasien ≤ 15 menit.
-- ≥ 70% tugas yang disepakati benar-benar dijalankan pada hari ke-7.
-- Skor “berguna” rata-rata ≥ 3,5/5.
-- Tidak ada insiden privasi (tautan salah sasaran, data terbaca orang tak berhak).
-
-**Setelah pilot**
-- Tinjau konflik “tidak terselesaikan” dan alasan strukturalnya (dukungan tidak ada, biaya, transport).
-- Putuskan opsi katalog mana yang layak diaktifkan permanen.
-- Perbaiki bahasa formulir berdasarkan komentar keluarga, lalu ulangi dengan 10 keluarga berikutnya.
-
-## Kriteria penerimaan — status di prototipe
-
-| Kriteria | Status |
-|---|---|
-| Profil + tugas satu pasien < 15 menit | Dapat dicapai: form 5 langkah + 12 templat; waktu diukur di dasbor |
-| Setiap konflik punya alasan & jejak aturan | Ya: alasan, angka, `ruleId`, teks aturan |
-| Tidak ada perubahan terapi otomatis | Ya: opsi berlabel jenis; efek hanya setelah keputusan klinisi |
-| Keputusan tercatat & pemetaan dihitung ulang | Ya: aktor, tanggal, catatan, sebelum vs sesudah |
-| Ringkasan cetak dapat dipahami awam | Ya: bahasa sederhana + bagian “masih perlu dibicarakan” |
-| ≥ 10 keluarga fiktif, ≥ 3 skenario konflik | Ya: 10 keluarga, 8 aturan terpicu |
-
-## Yang belum dikerjakan
-
-- Backend, database tersentral, autentikasi/otorisasi nyata, enkripsi at-rest, API.
-- Penghapusan/ekspor data dan pencabutan tautan oleh petugas (UI belum ada).
-- Pembuatan PDF di server (sekarang lewat dialog cetak).
-- AI fase 2 (draf tugas dari teks pulang, penyederhanaan bahasa) — sengaja mati.
-- Mode gelap, internasionalisasi, dan pengujian aksesibilitas bersama pengguna.
-- Notifikasi WhatsApp, integrasi SIMRS/SATUSEHAT, pembayaran, aplikasi native.
-- Uji lapangan dan validasi klinis.
-
-## Keputusan desain yang perlu dikonfirmasi
-
-1. **Efek opsi otomatis**: saat klinisi menyetujui “gabung jadwal”, frekuensi kontrol langsung turun 50%. Apakah sebaiknya sistem hanya mengusulkan dan klinisi mengedit tugas manual?
-2. **Tautan keluarga**: hanya-baca (sekarang) atau keluarga boleh mengisi kapasitas sendiri? Bila boleh, perlu identitas dan consent terpisah.
-3. **Status “diterima dengan risiko”**: dihitung sebagai temuan yang sudah diputuskan atau tetap “belum terselesaikan” dalam metrik utama?
-4. **Ambang awal** 3 jam / 240 menit / 7 tugas: perlu disesuaikan per layanan oleh klinisi sebelum pilot.
-5. **Retensi audit dan data kapasitas**: berapa lama, dan siapa yang berwenang menghapus?
-6. **Definisi “perubahan layanan”** untuk metrik utama: apakah mencakup rujukan puskesmas dan pinjam alat, atau hanya perubahan jadwal/dukungan?
+Asumsi, definisi metrik, protokol uji coba 10 keluarga, dan keputusan desain yang masih terbuka ada di [`docs/pilot.md`](docs/pilot.md).

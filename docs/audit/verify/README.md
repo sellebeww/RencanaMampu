@@ -1,6 +1,6 @@
 # Skrip verifikasi audit
 
-Dipakai untuk membuktikan tidak ada regresi selama audit 2026-10-20. Bukan bagian aplikasi, dan aplikasi tetap tanpa build step maupun npm.
+Dipakai untuk membuktikan tidak ada regresi selama audit 2026-10-20. Bukan bagian aplikasi. Sejak migrasi TypeScript, skrip dijalankan terhadap hasil build (`dist/`); skrip memakai kait debug `window.RM` yang diekspos `src/app.ts` dan `src/tests-page.ts`.
 
 ```bash
 # 1. Siapkan alat di folder sementara di LUAR proyek
@@ -11,12 +11,13 @@ cp <folder-proyek>/docs/audit/verify/*.js .
 
 # 2. Sajikan aplikasi (port 8765). Untuk geom.js, sajikan juga commit baseline di port 8766:
 #    git worktree add /tmp/rm-base 1916af1 && (cd /tmp/rm-base && python3 -m http.server 8766)
-(cd <folder-proyek> && python3 -m http.server 8765 --bind 127.0.0.1) &
+(cd <folder-proyek> && npm run build && npx vite preview --port 8765 --strictPort --host 127.0.0.1) &
 
 # 3. Jalankan
 node check.js http://127.0.0.1:8765/ hasil.json   # 35 unit test, 134 render route, konsol, overflow 360px, label, XSS
 node flow.js  http://127.0.0.1:8765/              # alur klik: tugas, keputusan, tautan keluarga, tindak lanjut, pengaturan
 node axe.js 8765                                  # axe-core WCAG 2.2 A/AA + best practice
+node axe-profil.js                                # profil.html: axe, overflow 320–1366px, menu ponsel, reduced motion
 node geom.js                                      # geometri + style setiap elemen: baseline (8766) vs saat ini (8765)
 ```
 

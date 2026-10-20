@@ -11,7 +11,7 @@ const BASEPORT = process.env.BASEPORT || 8766;
     for (const port of [BASEPORT, 8765]) {
       const p = await b.newPage({ viewport: { width: w, height: 900 } });
       await p.route(/fonts\.(googleapis|gstatic)\.com/, x => x.abort());
-      await p.goto('http://127.0.0.1:' + port + '/index.html'); await p.evaluate(() => localStorage.clear());
+      await p.goto('http://127.0.0.1:' + port + '/index.html#/pasien'); await p.evaluate(() => localStorage.clear());
       await p.goto('http://127.0.0.1:' + port + '/index.html' + r); await p.reload({ waitUntil: 'load' }); await p.addStyleTag({ content: '*,*::before,*::after{transition:none!important;animation:none!important}' }); await p.evaluate(() => document.getAnimations().forEach(a => a.finish())); await p.evaluate(() => window.scrollTo(0, 0)); await p.waitForTimeout(120);
       snaps.push(await p.evaluate(() => [...document.body.querySelectorAll('*')].filter(e => !e.closest('script')).map(e => {
         const b = e.getBoundingClientRect(); const c = getComputedStyle(e);

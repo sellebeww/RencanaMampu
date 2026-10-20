@@ -10,18 +10,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E5C4A'/%3E%3Cpath d='M8 21c0-5 3.6-9 8-9s8 4 8 9' fill='none' stroke='%23F2F7F3' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='12' r='2.6' fill='%23E8C46A'/%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231A0610'/%3E%3Cg transform='translate(6.4 5) scale(.8)' fill='none' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M32 47 L12.5 27.5 C6 21 9 10.5 18.5 10 C24.5 9.7 28.5 14 32 18.5 C36 23.5 40.5 26 46.5 25.5' stroke='%23B0173F'/%3E%3Cpath d='M20.5 35.5 L32 47 L50.5 28.5 C57 22 54 10.5 44.5 10.5 C40 10.5 37 13 35.5 15.5' stroke='%23FF5E54'/%3E%3C/g%3E%3C/svg%3E" />
 </head>
 <body>
 <header class="site-header">
   <div class="header-inner">
-    <a class="brand" href="index.html">
+    <a class="brand" href="index.html#/pasien">
       <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="11" fill="currentColor"/><path d="M9 27c0-6.6 4.9-11.8 11-11.8S31 20.4 31 27" stroke="#F2F7F3" stroke-width="2.6" stroke-linecap="round"/><circle cx="20" cy="13.4" r="3.1" fill="#E8C46A"/><path d="M14 27h12" stroke="#8FC9B4" stroke-width="2.6" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 47 L12.5 27.5 C6 21 9 10.5 18.5 10 C24.5 9.7 28.5 14 32 18.5 C36 23.5 40.5 26 46.5 25.5" stroke="#8E0F33" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.5 35.5 L32 47 L50.5 28.5 C57 22 54 10.5 44.5 10.5 C40 10.5 37 13 35.5 15.5" stroke="#FF5A50" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
       <span class="brand-text"><span class="brand-name">RencanaMampu</span><span class="brand-tag">Uji mesin aturan</span></span>
     </a>
-    <div class="header-tools"><a class="btn btn-secondary btn-sm" href="index.html">Kembali ke aplikasi</a></div>
+    <div class="header-tools"><a class="btn btn-secondary btn-sm" href="index.html#/pasien">Kembali ke aplikasi</a></div>
   </div>
 </header>
 
@@ -34,13 +34,10 @@
     </div>
     <div id="test-summary" aria-live="polite"></div>
     <div id="test-results" class="stack-4"></div>
-    <p class="small muted">Prototipe MVP. Data uji bukan data pasien nyata. Bila ada uji gagal, periksa <code>rules-config.js</code> dan <code>js/rules.js</code>.</p>
+    <p class="small muted">Prototipe MVP. Data uji bukan data pasien nyata. Bila ada uji gagal, periksa <code>src/config.ts</code> dan <code>src/rules.ts</code>.</p>
   </div>
 </main>
 
-<script src="rules-config.js"></script>
-<script src="js/rules.js"></script>
-<script src="js/data.js"></script>
-<script src="js/rules.test.js"></script>
+<script type="module" src="./src/tests-page.ts"></script>
 </body>
 </html>

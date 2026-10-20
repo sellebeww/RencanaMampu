@@ -9,7 +9,7 @@ const PORT = process.argv[2] || 8765;
   const agg = {};
   for (const w of [390, 1280]) for (const role of ['perencana', 'klinisi']) for (const r of routes) {
     const p = await b.newPage({ viewport: { width: w, height: 900 }, bypassCSP: true });
-    await p.goto('http://127.0.0.1:' + PORT + '/index.html'); await p.evaluate((role) => { localStorage.clear(); }, role);
+    await p.goto('http://127.0.0.1:' + PORT + '/index.html#/pasien'); await p.evaluate((role) => { localStorage.clear(); }, role);
     await p.reload(); await p.evaluate((role) => RM.store.setRole(role), role);
     await p.goto('http://127.0.0.1:' + PORT + '/' + (r.startsWith('#') ? 'index.html' + r : r)); await p.reload({ waitUntil: 'load' });
     await p.addStyleTag({ content: '*,*::before,*::after{transition:none!important;animation:none!important}' });

@@ -8,7 +8,7 @@ const BASE = process.argv[2] || 'http://127.0.0.1:8765/';
   page.on('pageerror', e => errs.push(e.message)); page.on('console', m => { if (m.type() === 'error') errs.push(m.text()); });
   const toast = () => page.evaluate(() => { const t = document.getElementById('toast'); return t.hidden ? '' : t.textContent; });
   const nav = async h => { await page.evaluate(h => { location.hash = h; }, h); await page.waitForTimeout(80); };
-  await page.goto(BASE + 'index.html'); await page.evaluate(() => localStorage.clear()); await page.reload();
+  await page.goto(BASE + 'index.html#/pasien'); await page.evaluate(() => localStorage.clear()); await page.reload();
   // 1. Tambah tugas dari templat lalu simpan
   await nav('#/pasien/P01/tugas');
   const before = await page.evaluate(() => RM.store.tasks('P01').length);

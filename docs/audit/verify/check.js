@@ -23,7 +23,7 @@ const FREE_TEXT = new Set(['nama', 'catatan', 'kendala', 'keterbatasan', 'layana
   report.tests = await page.evaluate(() => ({ total: RM.tests.total, passed: RM.tests.passed, failed: RM.tests.failed,
     failures: RM.tests.results.filter((r) => !r.ok).map((r) => r.name + ': ' + r.error) }));
 
-  await page.goto(BASE + 'index.html');
+  await page.goto(BASE + 'index.html#/pasien');
   await page.evaluate(() => { localStorage.clear(); });
   await page.reload();
   const ids = await page.evaluate(() => RM.store.state.pasien.map((p) => p.id));

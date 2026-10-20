@@ -1,31 +1,35 @@
 /* RencanaMampu — unit test mesin aturan.
    Dibuka lewat tests.html. Tidak membutuhkan server atau pustaka luar.
    Setiap aturan diuji dengan fixture sintetis yang kecil dan deterministik. */
-(function () {
-  const RM = window.RM;
-  const F = RM.fmt;
-  const results = [];
+import { RM_CONFIG } from './config';
+import { demo } from './data';
+import { fmt as F, rules } from './rules';
+import type { Config, Decision, DecisionStatus, Finding, Pasien, Profile, Task, TestResult, TestSummary } from './types';
+
+export function runRuleTests(): TestSummary {
+  const results: TestResult[] = [];
   let group = 'Umum';
 
-  function test(name, fn) {
+  function test(name: string, fn: () => void) {
     try {
       fn();
       results.push({ group: group, name: name, ok: true });
     } catch (err) {
-      results.push({ group: group, name: name, ok: false, error: err && err.message ? err.message : String(err) });
+      results.push({ group: group, name: name, ok: false, error: err instanceof Error ? err.message : String(err) });
     }
   }
-  function assert(cond, message) {
+  function assert(cond: unknown, message?: string) {
     if (!cond) throw new Error(message || 'Kondisi tidak terpenuhi');
   }
-  function same(a, b, message) {
+  function same(a: unknown, b: unknown, message?: string) {
     if (a !== b) throw new Error((message || 'Nilai tidak sama') + ' — diharapkan ' + b + ', didapat ' + a);
   }
-  function find(list, ruleId, dimensi) {
+  function find(list: Finding[], ruleId: string, dimensi?: string) {
     return list.filter(function (f) { return f.ruleId === ruleId && (!dimensi || f.dimensi === dimensi); });
   }
 
-  const baseProfile = function (over) {
+  // Fixture sengaja boleh tidak lengkap (mis. pendamping tanpa jamKerja) untuk menguji nilai bawaan.
+  const baseProfile = function (over?: Record<string, unknown>): Profile {
     const p = {
       id: 'PX-p1', pasienId: 'PX', versi: 1, status: 'final', diperbarui: F.today(),
       consent: { diberikan: true, oleh: 'Keluarga', pada: F.today() },
@@ -37,24 +41,24 @@
       komunitas: { kader: true, puskesmas: 'Puskesmas Uji', tetangga: true },
       bebanAwal: 2
     };
-    return Object.assign(p, over || {});
+    return Object.assign(p, over || {}) as unknown as Profile;
   };
 
   let seq = 0;
-  function task(over) {
+  function task(over?: Partial<Task>): Task {
     seq++;
     return Object.assign({
       id: 't' + seq, nama: 'Tugas uji ' + seq, kategori: 'obat', perHari: 1, menit: 10,
       hari: [0, 1, 2, 3, 4, 5, 6], slot: 'pagi', keterampilan: 'dasar', butuhPendamping: false,
       butuhTransport: false, perBulanKontrol: 0, biayaBulanan: 0, syaratRumah: [],
-      butuhDigital: null, kritis: 'sedang', bolehDisederhanakan: true
+      butuhDigital: null, kritis: 'sedang', bolehDisederhanakan: true, catatan: ''
     }, over || {});
   }
-  function calc(profile, tasks, decisions) {
-    return RM.rules.compute({ id: 'PX', kode: 'PX-1' }, profile, tasks, decisions || [], window.RM_CONFIG);
+  function calc(profile: Profile, tasks: Task[], decisions?: Decision[]) {
+    return rules.compute({ id: 'PX', kode: 'PX-1' } as Pasien, profile, tasks, decisions || [], RM_CONFIG);
   }
-  function effect(opsi, status) {
-    return [{ findingId: 'uji', dimensi: 'uji', status: status || 'dukungan', opsi: opsi }];
+  function effect(opsi: string[], status?: DecisionStatus): Decision[] {
+    return [{ findingId: 'uji', dimensi: 'uji', taskIds: [], status: status || 'dukungan', opsi: opsi, catatan: '' }];
   }
 
   /* ---------------- R1 Waktu ---------------- */
@@ -210,11 +214,12 @@
     same(find(selesai.effective, 'R6').length, 0, 'dukungan menerapkan efek');
   });
   test('keputusan tidak bisa memakai opsi nonaktif dari katalog', function () {
-    const cfg = JSON.parse(JSON.stringify(window.RM_CONFIG));
+    const cfg: Config = JSON.parse(JSON.stringify(RM_CONFIG));
     const o = cfg.katalog.find(function (x) { return x.id === 'sewa_alat'; });
-    o.aktif = false;
-    const f = { dimensi: 'alat' };
-    const opsi = RM.rules.opsiUntuk(f, cfg);
+    assert(o, 'opsi sewa_alat harus ada di katalog');
+    o!.aktif = false;
+    const f = { dimensi: 'alat' } as Finding;
+    const opsi = rules.opsiUntuk(f, cfg);
     assert(!opsi.some(function (x) { return x.id === 'sewa_alat'; }), 'opsi nonaktif tidak boleh disarankan');
   });
 
@@ -229,7 +234,7 @@
     const prof = baseProfile({ ekonomi: { biayaBulanan: 300000 } });
     const tasks = [task({ biayaBulanan: 450000 })];
     const f = calc(prof, tasks).effective[0];
-    const dec = [{ findingId: f.id, dimensi: 'biaya', status: 'dukungan', opsi: ['pekerja_sosial'] }];
+    const dec: Decision[] = [{ findingId: f.id, dimensi: 'biaya', taskIds: [], status: 'dukungan', opsi: ['pekerja_sosial'], catatan: '' }];
     const h = calc(prof, tasks, dec);
     assert(h.ringkas.sebagian >= 0, 'ringkasan harus punya hitungan sebagian');
     assert(h.ringkas.terbuka === 0, 'tidak boleh terbuka karena sudah ada keputusan');
@@ -275,20 +280,20 @@
 
   group = 'Data demo';
   test('tersedia 10 keluarga fiktif', function () {
-    const d = RM.demo.build();
+    const d = demo.build();
     same(d.pasien.length, 10);
   });
   test('minimal tiga skenario konflik berbeda muncul', function () {
-    const d = RM.demo.build();
-    const rules = {};
+    const d = demo.build();
+    const terpicu: Record<string, boolean> = {};
     d.pasien.forEach(function (p) {
-      const h = RM.rules.compute(p, d.profiles[p.id], d.tasks[p.id] || [], d.decisions.filter(function (x) { return x.pasienId === p.id; }), window.RM_CONFIG);
-      h.effective.forEach(function (f) { if (f.tingkat !== 'sesuai') rules[f.ruleId] = true; });
+      const h = rules.compute(p, d.profiles[p.id], d.tasks[p.id] || [], d.decisions.filter(function (x) { return x.pasienId === p.id; }), RM_CONFIG);
+      h.effective.forEach(function (f) { if (f.tingkat !== 'sesuai') terpicu[f.ruleId] = true; });
     });
-    assert(Object.keys(rules).length >= 3, 'butuh minimal tiga jenis aturan berbeda');
+    assert(Object.keys(terpicu).length >= 3, 'butuh minimal tiga jenis aturan berbeda');
   });
   test('semua opsi katalog punya jenis dan label', function () {
-    window.RM_CONFIG.katalog.forEach(function (o) {
+    RM_CONFIG.katalog.forEach(function (o) {
       assert(o.jenis === 'penyesuaian' || o.jenis === 'dukungan', 'jenis opsi tidak valid: ' + o.id);
       assert(o.label && o.label.length > 3, 'label opsi kosong');
       assert(Array.isArray(o.dimensi) && o.dimensi.length, 'dimensi opsi kosong');
@@ -299,29 +304,5 @@
   const failed = results.length - passed;
   const summary = { total: results.length, passed: passed, failed: failed, results: results };
 
-  if (typeof document !== 'undefined' && document.getElementById('test-results')) {
-    const groups = {};
-    results.forEach(function (r) { (groups[r.group] = groups[r.group] || []).push(r); });
-    document.getElementById('test-summary').innerHTML =
-      '<div class="stat-strip cols-3">' +
-        '<div class="stat-block"><span class="stat-label">Total uji</span><span class="stat-value">' + results.length + '</span></div>' +
-        '<div class="stat-block"><span class="stat-label">Lulus</span><span class="stat-value is-ok">' + passed + '</span></div>' +
-        '<div class="stat-block"><span class="stat-label">Gagal</span><span class="stat-value ' + (failed ? 'is-danger' : '') + '">' + failed + '</span></div>' +
-      '</div>' +
-      '<div class="notice ' + (failed ? 'notice-danger' : 'notice-ok') + '" style="margin-top:16px">' +
-        '<div><strong>' + (failed ? failed + ' uji gagal.' : 'Semua aturan lulus uji.') + '</strong> Mesin ini deterministik: masukan yang sama selalu menghasilkan temuan yang sama.</div></div>';
-    document.getElementById('test-results').innerHTML = Object.keys(groups).map(function (g) {
-      return '<section class="card"><div class="card-head"><h2>' + g + '</h2><span class="badge ' +
-        (groups[g].some(function (r) { return !r.ok; }) ? 'badge-danger' : 'badge-ok') + '">' +
-        groups[g].filter(function (r) { return r.ok; }).length + '/' + groups[g].length + '</span></div>' +
-        '<div class="mini-list">' + groups[g].map(function (r) {
-          return '<div class="mini-item">' + (r.ok
-            ? '<svg class="od-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#0E5C4A" stroke-width="1.8"/><path d="m8.2 12.2 2.5 2.5 5-5.4" fill="none" stroke="#0E5C4A" stroke-width="1.9" stroke-linecap="round"/></svg>'
-            : '<svg class="od-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#9A2418" stroke-width="1.8"/><path d="m9 9 6 6M15 9l-6 6" stroke="#9A2418" stroke-width="1.9" stroke-linecap="round"/></svg>') +
-            '<div><span class="t">' + r.name + '</span>' + (r.ok ? '' : '<span class="d" style="color:#841E14">' + (r.error || '') + '</span>') + '</div></div>';
-        }).join('') + '</div></section>';
-    }).join('');
-  }
-
-  RM.tests = summary;
-})();
+  return summary;
+}

@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" />
+<meta name="referrer" content="no-referrer" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="description" content="RencanaMampu membantu tenaga kesehatan menemukan bagian rencana pulang yang sulit dijalankan keluarga, sebelum pasien pulang." />
+<meta name="theme-color" content="#8E0F33" />
+<meta property="og:title" content="RencanaMampu — Rencana pulang yang sanggup dijalankan keluarga" />
+<meta property="og:description" content="Memetakan beban tugas perawatan terhadap kapasitas keluarga: waktu, keterampilan, pendamping, transportasi, biaya, alat, dan akses digital." />
+<title>RencanaMampu — Rencana pulang yang sanggup dijalankan keluarga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="profil.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231A0610'/%3E%3Cg transform='translate(6.4 5) scale(.8)' fill='none' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M32 47 L12.5 27.5 C6 21 9 10.5 18.5 10 C24.5 9.7 28.5 14 32 18.5 C36 23.5 40.5 26 46.5 25.5' stroke='%23B0173F'/%3E%3Cpath d='M20.5 35.5 L32 47 L50.5 28.5 C57 22 54 10.5 44.5 10.5 C40 10.5 37 13 35.5 15.5' stroke='%23FF5E54'/%3E%3C/g%3E%3C/svg%3E" />
+</head>
+<body class="pf">
+<a class="skip-link" href="#isi">Lewati ke konten utama</a>
+<div class="pf-progress" aria-hidden="true"></div>
+
+<header class="pf-header" id="pf-header">
+  <div class="pf-header-inner">
+    <a class="brand" href="#isi" aria-label="RencanaMampu, ke atas halaman">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 47 L12.5 27.5 C6 21 9 10.5 18.5 10 C24.5 9.7 28.5 14 32 18.5 C36 23.5 40.5 26 46.5 25.5" stroke="#8E0F33" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.5 35.5 L32 47 L50.5 28.5 C57 22 54 10.5 44.5 10.5 C40 10.5 37 13 35.5 15.5" stroke="#FF5A50" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="brand-name">RencanaMampu</span>
+    </a>
+
+    <nav class="pf-nav" id="pf-nav" aria-label="Bagian halaman">
+      <a href="#masalah">Masalah</a>
+      <a href="#cara-kerja">Cara kerja</a>
+      <a href="#dimensi">7 dimensi</a>
+      <a href="#peran">Untuk siapa</a>
+      <a href="#uji-coba">Uji coba</a>
+      <a href="#faq">Tanya jawab</a>
+      <a class="pf-btn pf-btn-primary pf-nav-cta" href="index.html#/pasien">Buka aplikasi</a>
+    </nav>
+
+    <a class="pf-btn pf-btn-primary pf-header-cta" href="index.html#/pasien">Buka aplikasi <span class="pf-arrow" aria-hidden="true">→</span></a>
+    <button class="pf-menu" id="pf-menu" type="button" aria-expanded="false" aria-controls="pf-nav">
+      <span class="sr-only">Menu</span>
+      <span class="pf-menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+</header>
+
+<main id="isi" tabindex="-1">
+
+  <!-- Hero -->
+  <section class="pf-hero" aria-labelledby="hero-title">
+    <div class="pf-hero-bg" aria-hidden="true"></div>
+    <div class="pf-wrap pf-hero-grid">
+      <div class="pf-hero-copy">
+        <p class="pf-eyebrow pf-in" style="--d:0">Perencanaan pemulangan · Prototipe MVP</p>
+        <h1 id="hero-title" class="pf-hero-title">
+          <span class="pf-line pf-in" style="--d:1">Rencana pulang yang</span>
+          <span class="pf-line pf-in" style="--d:2"><em>sanggup</em> dijalankan</span>
+          <span class="pf-line pf-in" style="--d:3">keluarga.</span>
+        </h1>
+        <p class="pf-lede pf-in" style="--d:4">RencanaMampu memetakan setiap tugas perawatan terhadap kapasitas nyata keluarga, yaitu waktu, keterampilan, pendamping, transportasi, biaya, kondisi rumah, dan akses digital, lalu menunjukkan bagian yang akan sulit dijalankan, <strong>sebelum</strong> pasien pulang.</p>
+        <div class="pf-hero-actions pf-in" style="--d:5">
+          <a class="pf-btn pf-btn-primary pf-btn-lg" href="index.html#/pasien">Coba demo aplikasi <span class="pf-arrow" aria-hidden="true">→</span></a>
+          <a class="pf-btn pf-btn-ghost pf-btn-lg" href="#cara-kerja">Lihat cara kerja</a>
+        </div>
+        <ul class="pf-hero-points pf-in" style="--d:6">
+          <li>Tanpa AI. Aturan transparan.</li>
+          <li>Tidak mengubah terapi</li>
+          <li>Data demo fiktif</li>
+        </ul>
+      </div>
+
+      <!-- Visual: tugas menumpuk melewati kapasitas → konflik → keputusan → sesuai -->
+      <figure class="pf-demo pf-in" style="--d:3" id="pf-demo" aria-labelledby="demo-cap">
+        <div class="pf-demo-head">
+          <div>
+            <span class="pf-demo-kicker">Contoh pemetaan · RM-0xx</span>
+            <span class="pf-demo-title">Waktu pendamping per hari</span>
+          </div>
+          <span class="pf-status" data-status="idle"><span class="pf-status-dot" aria-hidden="true"></span><span class="pf-status-text">Menghitung…</span></span>
+        </div>
+
+        <div class="pf-meter" aria-hidden="true">
+          <div class="pf-meter-track">
+            <span class="pf-seg" data-seg="0" style="--w:10%">Insulin</span>
+            <span class="pf-seg" data-seg="1" style="--w:10%">Luka</span>
+            <span class="pf-seg" data-seg="2" style="--w:7%">Obat</span>
+            <span class="pf-seg" data-seg="3" style="--w:15%">Mobilisasi</span>
+            <span class="pf-seg pf-seg-kontrol" data-seg="4" style="--w:39%">Kontrol</span>
+          </div>
+          <div class="pf-cap" style="--x:66%"><span>Kapasitas 3 jam</span></div>
+        </div>
+        <div class="pf-meter-scale" aria-hidden="true"><span>0</span><span>1 j</span><span>2 j</span><span>3 j</span><span>4 j+</span></div>
+
+        <div class="pf-demo-cards" aria-hidden="true">
+          <div class="pf-card-finding">
+            <span class="pf-tag pf-tag-danger">Konflik · R1</span>
+            <p>Kontrol luka 4×/bulan + perjalanan melebihi jam pendamping yang tersedia.</p>
+          </div>
+          <div class="pf-card-decision">
+            <span class="pf-tag pf-tag-ok">Keputusan klinisi</span>
+            <p>Kunjungan perawat ke rumah. Kebutuhan transport dihapus.</p>
+            <span class="pf-by">dr. Maya · dicatat manual</span>
+          </div>
+        </div>
+
+        <div class="pf-dims" aria-hidden="true">
+          <span data-dim="0">Waktu</span><span data-dim="1">Terampil</span><span data-dim="2">Damping</span><span data-dim="3">Transport</span><span data-dim="4">Biaya</span><span data-dim="5">Rumah</span><span data-dim="6">Digital</span>
+        </div>
+        <figcaption id="demo-cap" class="pf-demo-cap">Ilustrasi alur: tugas ditambahkan, konflik waktu terdeteksi, klinisi memilih kunjungan rumah, beban kembali di bawah kapasitas.</figcaption>
+        <button class="pf-demo-toggle" type="button" id="pf-demo-toggle" aria-pressed="false">Jeda animasi</button>
+      </figure>
+    </div>
+
+    <div class="pf-marquee" aria-hidden="true">
+      <div class="pf-marquee-track">
+        <span>Injeksi insulin</span><span>Perawatan luka kaki</span><span>Obat rutin oral</span><span>Cek gula darah mandiri</span><span>Ukur tekanan darah</span><span>Catat cairan &amp; berat badan</span><span>Kontrol luka ke fasilitas</span><span>Cek laboratorium rutin</span><span>Diet rendah gula &amp; garam</span><span>Latihan mobilisasi ringan</span><span>Makan via selang NGT</span><span>Telekonsultasi perawat</span>
+        <span>Injeksi insulin</span><span>Perawatan luka kaki</span><span>Obat rutin oral</span><span>Cek gula darah mandiri</span><span>Ukur tekanan darah</span><span>Catat cairan &amp; berat badan</span><span>Kontrol luka ke fasilitas</span><span>Cek laboratorium rutin</span><span>Diet rendah gula &amp; garam</span><span>Latihan mobilisasi ringan</span><span>Makan via selang NGT</span><span>Telekonsultasi perawat</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Masalah -->
+  <section class="pf-section" id="masalah" aria-labelledby="masalah-title">
+    <div class="pf-wrap pf-problem">
+      <div class="pf-problem-quote" data-reveal>
+        <p class="pf-eyebrow">Masalah yang kami pecahkan</p>
+        <h2 id="masalah-title" class="pf-h2">Rencana pulang sering ditulis untuk pasien, <em>bukan</em> untuk rumah tempat ia akan dirawat.</h2>
+      </div>
+      <div class="pf-problem-body" data-reveal style="--i:1">
+        <p>Instruksi pulang bisa benar secara klinis, tetapi tetap gagal di rumah. Pendamping bekerja di jam suntik insulin, ongkos kontrol mingguan melebihi kemampuan, atau tidak ada kulkas untuk menyimpan obat.</p>
+        <p>Hambatan seperti ini jarang tercatat. Hambatan itu baru terlihat ketika pasien kembali dirawat. RencanaMampu membuatnya terlihat lebih awal, satu tugas demi satu tugas, dengan alasan yang bisa ditelusuri.</p>
+      </div>
+    </div>
+
+    <div class="pf-wrap">
+      <dl class="pf-stats">
+        <div class="pf-stat" data-reveal style="--i:0"><dt>Dimensi kapasitas</dt><dd><span data-count="7">7</span></dd><dd class="pf-stat-note">dipetakan untuk setiap tugas</dd></div>
+        <div class="pf-stat" data-reveal style="--i:1"><dt>Aturan konflik</dt><dd><span data-count="8">8</span></dd><dd class="pf-stat-note">deterministik, dengan kode R1–R8</dd></div>
+        <div class="pf-stat" data-reveal style="--i:2"><dt>Target waktu</dt><dd>≤ <span data-count="15">15</span><small>mnt</small></dd><dd class="pf-stat-note">profil + tugas untuk satu pasien</dd></div>
+        <div class="pf-stat" data-reveal style="--i:3"><dt>Perubahan terapi otomatis</dt><dd><span data-count="0">0</span></dd><dd class="pf-stat-note">semua keputusan oleh klinisi</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Cara kerja -->
+  <section class="pf-section pf-section-alt" id="cara-kerja" aria-labelledby="cara-title">
+    <div class="pf-wrap">
+      <header class="pf-section-head" data-reveal>
+        <p class="pf-eyebrow">Cara kerja</p>
+        <h2 id="cara-title" class="pf-h2">Lima langkah, satu meja, kurang dari 15 menit.</h2>
+        <p class="pf-section-lede">Dirancang untuk percakapan perencana pemulangan bersama keluarga, bukan formulir tambahan.</p>
+      </header>
+
+      <ol class="pf-steps" id="pf-steps">
+        <li class="pf-step" data-reveal style="--i:0">
+          <span class="pf-step-n">01</span>
+          <h3>Profil kapasitas</h3>
+          <p>Percakapan 5 langkah, sekitar 5 menit. Persetujuan keluarga dicatat lebih dulu, dan bisa disimpan sebagian.</p>
+        </li>
+        <li class="pf-step" data-reveal style="--i:1">
+          <span class="pf-step-n">02</span>
+          <h3>Tugas perawatan</h3>
+          <p>Pilih dari 12 templat (insulin, luka, NGT, kontrol, diet, mobilisasi), lalu sesuaikan frekuensi dan durasinya.</p>
+        </li>
+        <li class="pf-step" data-reveal style="--i:2">
+          <span class="pf-step-n">03</span>
+          <h3>Pemetaan</h3>
+          <p>Matriks tugas × 7 dimensi. Konflik diurutkan berdasarkan tingkat kritis tugas, lengkap dengan angka dan kode aturan.</p>
+        </li>
+        <li class="pf-step" data-reveal style="--i:3">
+          <span class="pf-step-n">04</span>
+          <h3>Keputusan klinisi</h3>
+          <p>Sesuaikan rencana, tambah dukungan, terima dengan risiko, atau catat sebagai belum terselesaikan. Pemetaan dihitung ulang.</p>
+        </li>
+        <li class="pf-step" data-reveal style="--i:4">
+          <span class="pf-step-n">05</span>
+          <h3>Ringkasan &amp; tindak lanjut</h3>
+          <p>Satu halaman berbahasa sederhana untuk keluarga, siap dicetak, diikuti tindak lanjut hari ke-7 dan ke-30.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 7 dimensi -->
+  <section class="pf-section" id="dimensi" aria-labelledby="dimensi-title">
+    <div class="pf-wrap">
+      <header class="pf-section-head" data-reveal>
+        <p class="pf-eyebrow">Yang dipetakan</p>
+        <h2 id="dimensi-title" class="pf-h2">Tujuh hal yang menentukan apakah sebuah tugas benar-benar terjadi.</h2>
+      </header>
+      <ul class="pf-dim-grid">
+        <li class="pf-dim" data-reveal style="--i:0"><span class="pf-dim-code">R1</span><h3>Waktu</h3><p>Total menit tugas harian dibandingkan jam pendamping yang tersedia pada hari itu.</p></li>
+        <li class="pf-dim" data-reveal style="--i:1"><span class="pf-dim-code">R2</span><h3>Keterampilan</h3><p>Tugas terlatih seperti suntik atau luka butuh pendamping dengan keterampilan sejenis.</p></li>
+        <li class="pf-dim" data-reveal style="--i:2"><span class="pf-dim-code">R3</span><h3>Pendamping</h3><p>Apakah ada orang di rumah pada slot waktu tugas, bukan sedang bekerja.</p></li>
+        <li class="pf-dim" data-reveal style="--i:3"><span class="pf-dim-code">R4</span><h3>Transportasi</h3><p>Moda tersedia dan menit perjalanan kontrol per bulan di bawah ambang layanan.</p></li>
+        <li class="pf-dim" data-reveal style="--i:4"><span class="pf-dim-code">R5</span><h3>Biaya</h3><p>Biaya tugas dan transport per bulan dibandingkan kemampuan keluarga.</p></li>
+        <li class="pf-dim" data-reveal style="--i:5"><span class="pf-dim-code">R6</span><h3>Alat &amp; rumah</h3><p>Listrik, kulkas, air bersih, dan ruang yang dibutuhkan tugas.</p></li>
+        <li class="pf-dim" data-reveal style="--i:6"><span class="pf-dim-code">R7</span><h3>Digital</h3><p>Ponsel, WhatsApp, atau panggilan video untuk telekonsultasi dan pelaporan.</p></li>
+        <li class="pf-dim pf-dim-note" data-reveal style="--i:7"><span class="pf-dim-code">R8</span><h3>Beban kumulatif</h3><p>Terlalu banyak tugas harian sekaligus menjadi peringatan tersendiri.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Prinsip -->
+  <section class="pf-section pf-section-dark" aria-labelledby="prinsip-title">
+    <div class="pf-wrap">
+      <header class="pf-section-head" data-reveal>
+        <p class="pf-eyebrow">Prinsip</p>
+        <h2 id="prinsip-title" class="pf-h2">Alat bantu perencanaan, <em>bukan</em> alat klinis.</h2>
+      </header>
+      <div class="pf-principles">
+        <article class="pf-principle" data-reveal style="--i:0">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6l7-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Klinisi tetap memutuskan</h3>
+          <p>Tidak ada perubahan dosis atau terapi otomatis. Efek opsi hanya berlaku setelah klinisi menyimpan keputusan, lengkap dengan nama dan tanggal.</p>
+        </article>
+        <article class="pf-principle" data-reveal style="--i:1">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="18" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M20.2 18.2L22 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <h3>Setiap konflik bisa ditelusuri</h3>
+          <p>Alasan berbahasa Indonesia, nilai aktual vs ambang, dan kode aturan. Semua ambang bisa diatur admin layanan.</p>
+        </article>
+        <article class="pf-principle" data-reveal style="--i:2">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 10V7a4 4 0 018 0v3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          <h3>Privasi sejak awal</h3>
+          <p>Persetujuan dicatat sebelum profil diisi, tautan keluarga hanya-baca dan kedaluwarsa dalam 3 hari, serta tanpa panggilan jaringan pihak ketiga untuk data.</p>
+        </article>
+        <article class="pf-principle" data-reveal style="--i:3">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <h3>Bahasa keluarga</h3>
+          <p>Ringkasan ditulis untuk orang awam dan jujur soal hal yang <em>masih perlu dibicarakan</em>. Konflik tidak disembunyikan.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Untuk siapa -->
+  <section class="pf-section" id="peran" aria-labelledby="peran-title">
+    <div class="pf-wrap">
+      <header class="pf-section-head" data-reveal>
+        <p class="pf-eyebrow">Untuk siapa</p>
+        <h2 id="peran-title" class="pf-h2">Tiga peran, satu alur yang sama.</h2>
+        <p class="pf-section-lede">Pilih peran untuk langsung masuk ke demo dengan sudut pandang tersebut.</p>
+      </header>
+      <div class="pf-roles">
+        <a class="pf-role" href="index.html?peran=perencana#/pasien" data-reveal style="--i:0">
+          <span class="pf-role-k">Perencana pemulangan</span>
+          <p>Mengisi profil kapasitas bersama keluarga, mengelola tugas, melihat pemetaan, dan membuat tautan keluarga.</p>
+          <span class="pf-role-go">Coba sebagai perencana <span class="pf-arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="pf-role pf-role-feature" href="index.html?peran=klinisi#/pasien/P01/pemetaan" data-reveal style="--i:1">
+          <span class="pf-role-k">Klinisi penanggung jawab</span>
+          <p>Meninjau konflik, memilih penyesuaian atau dukungan, menulis catatan, dan melihat perbandingan sebelum vs sesudah.</p>
+          <span class="pf-role-go">Coba sebagai klinisi <span class="pf-arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="pf-role" href="index.html?peran=admin#/pengaturan" data-reveal style="--i:2">
+          <span class="pf-role-k">Admin layanan</span>
+          <p>Mengatur ambang aturan, mengaktifkan opsi katalog dukungan, dan memantau dasbor evaluasi layanan.</p>
+          <span class="pf-role-go">Coba sebagai admin <span class="pf-arrow" aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Uji coba -->
+  <section class="pf-section pf-section-alt" id="uji-coba" aria-labelledby="uji-title">
+    <div class="pf-wrap pf-pilot">
+      <div data-reveal>
+        <p class="pf-eyebrow">Rencana uji coba</p>
+        <h2 id="uji-title" class="pf-h2">Diuji dengan 10 keluarga sebelum diperluas.</h2>
+        <p class="pf-section-lede">Pertanyaan utamanya sederhana: <em>apakah temuan konflik menghasilkan perubahan layanan yang berguna</em>, atau hanya menambah formulir?</p>
+        <p class="pf-small">Angka di samping adalah ambang keberhasilan yang <strong>disarankan</strong> untuk pilot, bukan hasil yang sudah dicapai.</p>
+      </div>
+      <ul class="pf-targets">
+        <li data-reveal style="--i:0"><span class="pf-target-v">≥ 30%</span><span class="pf-target-l">temuan berujung perubahan rencana atau dukungan</span><span class="pf-bar" style="--p:30%"></span></li>
+        <li data-reveal style="--i:1"><span class="pf-target-v">≤ 15 mnt</span><span class="pf-target-l">median waktu untuk satu pasien</span><span class="pf-bar" style="--p:50%"></span></li>
+        <li data-reveal style="--i:2"><span class="pf-target-v">≥ 70%</span><span class="pf-target-l">tugas yang disepakati dijalankan pada hari ke-7</span><span class="pf-bar" style="--p:70%"></span></li>
+        <li data-reveal style="--i:3"><span class="pf-target-v">≥ 3,5/5</span><span class="pf-target-l">rata-rata skor “berguna” dari klinisi</span><span class="pf-bar" style="--p:70%"></span></li>
+        <li data-reveal style="--i:4"><span class="pf-target-v">0</span><span class="pf-target-l">insiden privasi</span><span class="pf-bar pf-bar-zero" style="--p:100%"></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="pf-section" id="faq" aria-labelledby="faq-title">
+    <div class="pf-wrap pf-faq-wrap">
+      <header class="pf-section-head" data-reveal>
+        <p class="pf-eyebrow">Tanya jawab</p>
+        <h2 id="faq-title" class="pf-h2">Yang sering ditanyakan.</h2>
+      </header>
+      <div class="pf-faq" data-reveal>
+        <details>
+          <summary>Apakah RencanaMampu memberi rekomendasi terapi?</summary>
+          <div class="pf-faq-a"><p>Tidak. RencanaMampu hanya membandingkan tuntutan tugas dengan kapasitas keluarga. Opsi penyesuaian dan dukungan dipilih dan dicatat oleh klinisi. Tidak ada dosis atau terapi yang diubah otomatis.</p></div>
+        </details>
+        <details>
+          <summary>Apakah memakai AI?</summary>
+          <div class="pf-faq-a"><p>Tidak. Mesin aturan berupa fungsi deterministik dengan ambang yang terlihat dan bisa diubah admin. Fitur AI (draf tugas dari teks pulang, penyederhanaan bahasa) sengaja dimatikan pada fase ini.</p></div>
+        </details>
+        <details>
+          <summary>Di mana data disimpan?</summary>
+          <div class="pf-faq-a"><p>Pada prototipe ini, data disimpan di penyimpanan lokal peramban tanpa enkripsi dan belum ada backend. Karena itu, gunakan hanya data fiktif. Usulan skema PostgreSQL untuk versi produksi sudah disiapkan.</p></div>
+        </details>
+        <details>
+          <summary>Apakah keluarga bisa melihat hasilnya?</summary>
+          <div class="pf-faq-a"><p>Ya. Ada ringkasan satu halaman yang bisa dicetak atau disimpan sebagai PDF, serta tautan keluarga hanya-baca yang berlaku 3 hari.</p></div>
+        </details>
+        <details>
+          <summary>Berapa lama mengisinya?</summary>
+          <div class="pf-faq-a"><p>Targetnya ≤ 15 menit untuk profil dan tugas satu pasien. Waktu pengisian diukur otomatis dan tampil di dasbor, sehingga klaim ini bisa diuji saat pilot.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pf-cta" aria-labelledby="cta-title">
+    <div class="pf-wrap pf-cta-inner" data-reveal>
+      <svg class="pf-cta-logo" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <path d="M32 47 L12.5 27.5 C6 21 9 10.5 18.5 10 C24.5 9.7 28.5 14 32 18.5 C36 23.5 40.5 26 46.5 25.5" stroke="#B0173F" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M20.5 35.5 L32 47 L50.5 28.5 C57 22 54 10.5 44.5 10.5 C40 10.5 37 13 35.5 15.5" stroke="#FF5E54" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h2 id="cta-title" class="pf-h2">Lihat konflik yang biasanya baru terlihat <em>setelah</em> pasien kembali dirawat.</h2>
+      <div class="pf-hero-actions">
+        <a class="pf-btn pf-btn-light pf-btn-lg" href="index.html#/pasien">Buka aplikasi demo <span class="pf-arrow" aria-hidden="true">→</span></a>
+        <a class="pf-btn pf-btn-outline-light pf-btn-lg" href="index.html#/dasbor">Lihat dasbor evaluasi</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pf-footer">
+  <div class="pf-wrap pf-footer-grid">
+    <div>
+      <span class="brand-name">RencanaMampu</span>
+      <p>Beban perawatan × kapasitas keluarga. Prototipe MVP dengan data demo fiktif.</p>
+    </div>
+    <nav aria-label="Tautan kaki">
+      <a href="index.html#/pasien">Aplikasi</a>
+      <a href="index.html#/dasbor">Dasbor</a>
+      <a href="docs/privasi.md">Catatan privasi</a>
+      <a href="tests.html">Uji aturan</a>
+    </nav>
+  </div>
+  <p class="pf-wrap pf-footer-note"><strong>Alat bantu perencanaan, bukan alat klinis.</strong> Tidak menggantikan keputusan klinisi.</p>
+</footer>
+
+<script type="module" src="./src/profil.ts"></script>
+</body>
+</html>
