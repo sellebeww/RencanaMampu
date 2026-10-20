@@ -3,7 +3,7 @@
 Branch: `chore/audit-20261020` · baseline: `1916af1` · stack: HTML/CSS/JS vanilla tanpa build, data di `localStorage`.
 
 ## 1. Ringkasan eksekutif
-Sebelum audit, prototipe sudah rapi (35/35 unit test lulus, tanpa error konsol, helper escape dipakai konsisten), tetapi halaman meluap horizontal di ponsel (30 route pada 360px), ada 5 jenis pelanggaran aksesibilitas axe, ID dirender ke atribut tanpa escape, tidak ada CSP, dan token tautan keluarga dibuat dengan `Math.random` lalu dicatat utuh di log audit. Sesudah audit: 0 pelanggaran axe (WCAG 2.2 AA), 0 overflow pada 320–1366px, 0 eksekusi XSS dari 68 route dengan payload di semua field teks, CSP aktif, dan 35/35 tes tetap lulus. Ada 6 commit, 8 file kode berubah (+48/−73 baris), `styles.css` 47.951 → 45.508 B. Tidak ada file yang dihapus, dan tidak ada secret ditemukan. Risiko terbesar yang tersisa bersifat arsitektural (tanpa backend/enkripsi) dan butuh keputusan Anda: lihat `MANUAL_ACTIONS.md`.
+Sebelum audit, prototipe sudah rapi (35/35 unit test lulus, tanpa error konsol, helper escape dipakai konsisten), tetapi halaman meluap horizontal di ponsel (30 route pada 360px), ada 5 jenis pelanggaran aksesibilitas axe, ID dirender ke atribut tanpa escape, tidak ada CSP, dan token tautan keluarga dibuat dengan `Math.random` lalu dicatat utuh di log audit. Sesudah audit: 0 pelanggaran axe (WCAG 2.2 AA), 0 overflow pada 320–1366px, 0 eksekusi XSS dari 68 route dengan payload di semua field teks, CSP aktif, dan 35/35 tes tetap lulus. Ada 7 commit, 9 file kode berubah (+48/−73 baris), `styles.css` 47.951 → 45.508 B. Tidak ada file yang dihapus, dan tidak ada secret ditemukan. Risiko terbesar yang tersisa bersifat arsitektural (tanpa backend/enkripsi) dan butuh keputusan Anda: lihat `MANUAL_ACTIONS.md`.
 
 ## 2. File dan folder yang dihapus
 Tidak ada file yang dihapus. Kode mati yang dihapus:
@@ -71,6 +71,8 @@ Semua dijalankan lokal (`python3 -m http.server`, Chrome headless via Playwright
 | Alur klik (tambah/hapus tugas, keputusan, tautan keluarga, tindak lanjut, pengaturan, langkah formulir) | `flow.js` | lulus | lulus, identik kecuali token tersamar [TERVERIFIKASI] |
 | Regresi visual (geometri + style setiap elemen, 65 route × 4 lebar, animasi dimatikan) | `geom.js` | — | 0 perbedaan setelah pembersihan CSS; sesudah perbaikan UI hanya berubah di tempat yang disengaja; media print identik [TERVERIFIKASI] |
 | Aksesibilitas | `axe.js` | 5 jenis pelanggaran | 0 [TERVERIFIKASI] |
+| Error konsol `tests.html` | red-team pass | 1 (404 `favicon.ico`, kegagalan lama) | 0 [TERVERIFIKASI] |
+| Clone bersih | `git clone` → semua skrip di atas | — | 35/35, 0 error, 0 overflow, 0 XSS, axe 0 [TERVERIFIKASI] |
 | Lint | ESLint 9 recommended (ad-hoc) | 1 global implisit, 1 variabel mati | 0 temuan nyata [TERVERIFIKASI] |
 | Build / type-check / audit dependensi | — | tidak ada (tanpa build, tanpa TS, tanpa dependensi) | [TIDAK DIUJI]: tidak berlaku |
 | Perangkat fisik & pembaca layar | — | — | [TIDAK DIUJI]: butuh manusia (MANUAL_ACTIONS #7) |

@@ -9,7 +9,8 @@ Baseline (kondisi asli sebelum audit): commit `1916af1` di branch `main`. Semua 
 | `381d7f8` | 6 UI | Tanpa scroll horizontal 320–900px, satu `h1` per halaman, notice Pengaturan |
 | `06a2a28` | 6 Aksesibilitas | Kontras, wadah gulir fokus-keyboard, landmark, role list |
 | `f0ec282` | 5 Kualitas | `window.RM_CONFIG` eksplisit, hapus variabel mati |
-| (terakhir) | 7 Dokumentasi | `docs/audit/*`, README |
+| `c93dcd7` | 7 Dokumentasi | `docs/audit/*`, README |
+| `192c17a` | 8 Verifikasi | Favicon di `tests.html` (404 lama ditemukan saat red-team pass) |
 
 ```bash
 # Batalkan semuanya (kembali ke kondisi asli):
