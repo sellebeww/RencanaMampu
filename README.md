@@ -13,9 +13,11 @@ Prototipe berupa HTML/CSS/JavaScript tanpa build step. Dua pilihan:
 
    ```bash
    cd <folder-proyek>
-   python3 -m http.server 8080
+   npm run dev          # Node 18+, tanpa npm install; port lain: PORT=3000 npm run dev
    # buka http://localhost:8080
    ```
+
+   Alternatif tanpa Node: `python3 -m http.server 8080`.
 
 Halaman uji aturan: `http://localhost:8080/tests.html` (35 uji, tanpa server).
 
@@ -90,6 +92,7 @@ js/data.js            10 keluarga fiktif + 12 templat tugas
 js/store.js           localStorage berversi, audit, consent, tautan keluarga
 js/views.js           tampilan daftar, pasien, formulir, tugas, pemetaan, cetak, dasbor, pengaturan
 js/app.js             router, delegasi event, validasi formulir
+scripts/dev-server.js server statis lokal untuk `npm run dev` (tanpa dependensi)
 js/rules.test.js      35 unit test aturan
 docs/schema.sql       usulan skema PostgreSQL
 docs/privasi.md       privasi, consent, batas kepatuhan

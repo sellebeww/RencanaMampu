@@ -1,0 +1,12 @@
+{
+  "name": "rencanamampu",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Prototipe RencanaMampu: pemetaan beban perawatan terhadap kapasitas keluarga.",
+  "scripts": {
+    "dev": "node scripts/dev-server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
