@@ -164,7 +164,7 @@
         '</form>' +
       '</div>' +
 
-      '<div class="patient-list" role="list">' +
+      '<div class="patient-list">' +
         (filtered.length ? filtered.map(function (r) {
           const p = r.pasien;
           const open = r.ringkas.terbuka;
@@ -175,7 +175,7 @@
           if (open) status += '<span class="badge badge-danger">' + icon('x') + open + ' konflik terbuka</span>';
           if (perhatian) status += '<span class="badge badge-warn">' + icon('alert') + perhatian + ' perhatian</span>';
           if (r.profile && r.profile.status === 'final' && !open && !perhatian) status += '<span class="badge badge-ok">' + icon('check') + 'Sesuai kapasitas</span>';
-          return '<a class="patient-row" role="listitem" href="#/pasien/' + p.id + '">' +
+          return '<a class="patient-row" href="#/pasien/' + p.id + '">' +
             '<div class="patient-id"><span class="code">' + e(p.kode) + '</span><span class="sub">' + p.usia + ' th · ' + e(p.ruang) + '</span></div>' +
             '<div class="patient-dx"><span class="dx">' + e(p.diagnosis) + '</span><span class="sub">' + e(pulangText(p)) + ' · ' + F.tanggal(p.pulang) + '</span></div>' +
             '<div class="patient-status">' + status + '</div>' +
@@ -335,9 +335,9 @@
         '<div class="page-actions"><a class="btn btn-ghost" href="#/pasien/' + id + '">' + icon('arrowLeft') + 'Kembali ke pasien</a></div></div>' +
 
       '<form class="form-shell" data-form="kapasitas" data-id="' + id + '" novalidate>' +
-        '<aside class="form-aside">' +
+        '<div class="form-aside">' +
           '<div class="card" style="padding:16px"><p class="small muted" style="margin-bottom:10px">Langkah ' + (current + 1) + ' dari 5</p>' +
-            '<div class="form-steps">' + STEPS.map(function (s, i) {
+            '<div class="form-steps" tabindex="0" role="region" aria-label="Langkah formulir">' + STEPS.map(function (s, i) {
               return '<div class="form-step-item ' + (i === current ? 'is-active' : '') + ' ' + (i < current ? 'is-done' : '') + '">' +
                 '<span class="num">' + (i < current ? icon('check') : i + 1) + '</span><span class="label">' + s + '</span></div>';
             }).join('') + '</div>' +
@@ -346,7 +346,7 @@
           versiCard(id, draft) +
           '<div class="card" style="padding:16px"><div class="row" style="gap:8px;align-items:flex-start">' + icon('shield') +
             '<div><p class="small" style="font-weight:700">Data sensitif</p><p class="small muted">Hanya untuk perencanaan pulang. Jangan memasukkan nama lengkap atau nomor rekam medis di catatan bebas.</p></div></div></div>' +
-        '</aside>' +
+        '</div>' +
 
         '<div class="form-main">' +
           '<div class="card form-card">' +
@@ -395,7 +395,7 @@
       '<div class="mini-list">' +
         '<div class="mini-item"><div><span class="t">Versi ' + (draft.versi || 1) + (draft.status === 'draf' ? ' · draf' : ' · aktif') + '</span><span class="d">' + F.tanggal(draft.diperbarui) + ' · ' + e(draft.diisiOleh || 'Belum dicatat') + '</span></div></div>' +
         lama.map(function (v) {
-          return '<div class="mini-item" style="opacity:.8"><div><span class="t">Versi ' + (v.versi || '—') + '</span><span class="d">' + F.tanggal(v.diperbarui) + ' · ' + e(v.diisiOleh || 'Belum dicatat') + '</span></div></div>';
+          return '<div class="mini-item"><div><span class="t">Versi ' + (v.versi || '—') + '</span><span class="d">' + F.tanggal(v.diperbarui) + ' · ' + e(v.diisiOleh || 'Belum dicatat') + '</span></div></div>';
         }).join('') +
       '</div></div>';
   }
@@ -698,7 +698,7 @@
       '<div class="grid-2">' +
         '<div class="card">' +
           '<div class="card-head"><div><h2>Matriks tugas × dimensi</h2><p>Warna selalu disertai ikon dan teks.</p></div></div>' +
-          (r.tasks.length && r.profile ? '<div class="matrix-wrap"><table class="matrix"><caption class="sr-only">Matriks tingkat kesesuaian setiap tugas terhadap tujuh dimensi kapasitas</caption><thead><tr><th scope="col">Tugas</th>' +
+          (r.tasks.length && r.profile ? '<div class="matrix-wrap" tabindex="0" role="region" aria-label="Matriks tugas × dimensi"><table class="matrix"><caption class="sr-only">Matriks tingkat kesesuaian setiap tugas terhadap tujuh dimensi kapasitas</caption><thead><tr><th scope="col">Tugas</th>' +
             cfg.dimensi.map(function (d) { return '<th scope="col">' + e(d.short) + '</th>'; }).join('') + '</tr></thead><tbody>' +
             r.matrix.map(function (row) {
               return '<tr><th scope="row"><span class="task-name">' + e(row.task.nama) + '</span><span class="task-cat">' + e(RM_CONFIG.kategori[row.task.kategori]) + ' · ' + (row.task.kritis === 'tinggi' ? 'kritis tinggi' : 'kritis ' + row.task.kritis) + '</span></th>' +
@@ -838,7 +838,7 @@
       '</dl>' +
 
       '<section class="sheet-section"><h2>Yang perlu dilakukan di rumah</h2>' +
-        (tasks.length ? '<div class="sheet-table-wrap"><table class="sheet-table"><thead><tr><th>Tugas</th><th>Berapa sering</th><th>Siapa yang membantu</th></tr></thead><tbody>' +
+        (tasks.length ? '<div class="sheet-table-wrap" tabindex="0" role="region" aria-label="Daftar tugas di rumah"><table class="sheet-table"><thead><tr><th>Tugas</th><th>Berapa sering</th><th>Siapa yang membantu</th></tr></thead><tbody>' +
           tasks.map(function (t) {
             return '<tr><td><strong>' + e(t.nama) + '</strong></td><td>' + e(taskFrekuensi(t)) + '</td><td>' + (t.butuhPendamping ? 'Pendamping keluarga' : 'Pasien dapat mandiri') + (t.keterampilan === 'terlatih' ? ' — perlu yang sudah dilatih' : '') + '</td></tr>';
           }).join('') + '</tbody></table></div>'
@@ -1032,7 +1032,7 @@
 
       '<div class="card">' +
         '<div class="card-head"><div><h2>Ringkasan per pasien</h2><p>Klik kode untuk membuka pemetaan.</p></div></div>' +
-        '<div class="matrix-wrap"><table class="matrix"><thead><tr><th scope="col">Pasien</th><th scope="col">Tugas</th><th scope="col">Konflik aktif</th><th scope="col">Terbuka</th><th scope="col">Data</th><th scope="col">Tindak lanjut</th></tr></thead><tbody>' +
+        '<div class="matrix-wrap" tabindex="0" role="region" aria-label="Ringkasan per pasien"><table class="matrix"><thead><tr><th scope="col">Pasien</th><th scope="col">Tugas</th><th scope="col">Konflik aktif</th><th scope="col">Terbuka</th><th scope="col">Data</th><th scope="col">Tindak lanjut</th></tr></thead><tbody>' +
           perPatient.map(function (r) {
             return '<tr><th scope="row"><a href="#/pasien/' + r.pasien.id + '" style="text-decoration:none"><span class="task-name">' + e(r.pasien.kode) + '</span><span class="task-cat">' + e(pulangText(r.pasien)) + '</span></a></th>' +
               '<td>' + r.tasks.length + '</td><td>' + r.ringkas.aktif + '</td><td>' + r.ringkas.terbuka + '</td>' +
@@ -1112,7 +1112,7 @@
 
           '<div class="card">' +
             '<div class="card-head"><div><h3>Log audit</h3><p>' + S.state.audit.length + ' entri · disimpan lokal</p></div></div>' +
-            '<div class="audit-wrap"><table class="audit-table"><thead><tr><th>Waktu</th><th>Aktor</th><th>Aksi</th><th>Target</th></tr></thead><tbody>' +
+            '<div class="audit-wrap" tabindex="0" role="region" aria-label="Log audit"><table class="audit-table"><thead><tr><th>Waktu</th><th>Aktor</th><th>Aksi</th><th>Target</th></tr></thead><tbody>' +
               audits.map(function (a) {
                 return '<tr><td>' + e(a.pada.replace('T', ' ')) + '</td><td>' + e(a.aktor) + '<br /><span class="muted">' + e(a.peran) + '</span></td><td>' + e(a.aksi) + '</td><td>' + e(a.target) + '</td></tr>';
               }).join('') + '</tbody></table></div>' +
