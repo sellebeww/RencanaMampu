@@ -96,9 +96,6 @@
     followUps: function (id) {
       return this.state.followUps.filter(function (f) { return f.pasienId === id; }).sort(function (a, b) { return a.hari - b.hari; });
     },
-    decisionFor: function (pasienId, findingId) {
-      return this.state.decisions.find(function (d) { return d.pasienId === pasienId && d.findingId === findingId; }) || null;
-    },
 
     hasil: function (id) {
       const p = this.getPasien(id);
