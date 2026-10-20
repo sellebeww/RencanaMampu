@@ -563,11 +563,11 @@ body.family-mode { padding-bottom: 0; }
 .task-form-panel h3 { font-size: 20px; margin-bottom: 4px; }
 
 /* ---------- Family summary / print ---------- */
-.family-sheet { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 40px; max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+.family-sheet { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 40px; width: 100%; max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
 .family-sheet .sheet-brand { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 2px solid var(--ink); padding-bottom: 14px; }
 .family-sheet .sheet-brand .name { font-family: var(--font-display); font-size: 22px; font-weight: 600; }
 .family-sheet .sheet-brand .meta { font-size: 12px; color: var(--muted); text-align: right; }
-.family-sheet h1 { font-size: 30px; }
+.family-sheet .sheet-title { font-size: 30px; margin-bottom: 0; }
 .family-sheet h2 { font-size: 20px; margin-bottom: 8px; }
 .family-sheet .sheet-section { border-top: 1px solid var(--line); padding-top: 18px; }
 .family-sheet p, .family-sheet li { font-size: 14.5px; color: var(--ink-2); line-height: 1.6; }
@@ -645,7 +645,7 @@ body.family-mode { padding-bottom: 0; }
 .empty-state { text-align: center; padding: 44px 24px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .empty-state .empty-icon { width: 52px; height: 52px; border-radius: 50%; background: var(--brand-soft); color: var(--brand-ink); display: flex; align-items: center; justify-content: center; }
 .empty-state .empty-icon .od-icon { --od-icon-size: 24px; }
-.empty-state h2, .empty-state h3 { font-size: 22px; }
+.empty-state h1, .empty-state h2, .empty-state h3 { font-size: 22px; }
 .empty-state p { color: var(--muted); font-size: 14px; max-width: 46ch; }
 
 .toast {
@@ -674,15 +674,16 @@ body.family-mode { padding-bottom: 0; }
 
 @media (max-width: 900px) {
   .stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .grid-2 { grid-template-columns: 1fr; }
-  .settings-grid { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: minmax(0, 1fr); }
+  .settings-grid { grid-template-columns: minmax(0, 1fr); }
   .patient-row { grid-template-columns: 120px minmax(0, 1fr) 130px 28px; }
   .patient-status { display: none; }
-  .form-shell { grid-template-columns: 1fr; }
+  .form-shell { grid-template-columns: minmax(0, 1fr); }
   .form-aside { position: static; }
   .form-steps { flex-direction: row; overflow-x: auto; gap: 4px; padding-bottom: 4px; }
   .form-step-item { flex: none; white-space: nowrap; padding: 8px 10px; }
   .form-step-item .label { font-size: 12px; }
+  .brand-tag, .role-label { display: none; }
 }
 
 @media (max-width: 767px) {
@@ -760,7 +761,7 @@ body.family-mode { padding-bottom: 0; }
   .family-sheet { padding: 22px 18px; border-radius: var(--r-md); }
   .family-sheet .sheet-brand { flex-direction: column; align-items: flex-start; gap: 6px; }
   .family-sheet .sheet-brand .meta { text-align: left; }
-  .family-sheet h1 { font-size: 26px; }
+  .family-sheet .sheet-title { font-size: 26px; }
   .sheet-meta-grid { grid-template-columns: 1fr 1fr; }
   .sheet-sign { grid-template-columns: 1fr; gap: 24px; }
   .sheet-table { min-width: 520px; }
@@ -779,6 +780,7 @@ body.family-mode { padding-bottom: 0; }
   .badge { font-size: 11.5px; padding: 3px 8px; }
   .compare-cell .val { font-size: 22px; }
   .burden-grid { grid-template-columns: 1fr; }
+  .role-control select { max-width: 116px; }
 }
 
 /* ---------- Motion preferences ---------- */

@@ -55,7 +55,7 @@
         else html = V.notFound('Halaman tidak tersedia.');
       } else html = V.notFound('Halaman tidak tersedia.');
     } catch (err) {
-      html = '<section class="page"><div class="card"><div class="empty-state"><div class="empty-icon">!</div><h2>Terjadi kesalahan tampilan</h2><p>' +
+      html = '<section class="page"><div class="card"><div class="empty-state"><div class="empty-icon">!</div><h1>Terjadi kesalahan tampilan</h1><p>' +
         'Muat ulang halaman. Data yang sudah tersimpan tetap aman di peramban ini.</p><button class="btn btn-secondary" data-action="reload">Muat ulang</button></div></div></section>';
       if (window.console) console.error(err);
     }

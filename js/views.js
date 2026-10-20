@@ -829,7 +829,7 @@
         '<div><div class="name">RencanaMampu</div><div class="small muted">Rencana perawatan di rumah</div></div>' +
         '<div class="meta">' + e(S.state.layanan) + '<br />Dicetak ' + F.tanggal(F.today()) + '<br />Kode ' + e(p.kode) + '</div>' +
       '</div>' +
-      '<div><h1>Rencana perawatan di rumah</h1>' +
+      '<div><h2 class="sheet-title">Rencana perawatan di rumah</h2>' +
         '<p style="margin-top:8px">Disusun bersama keluarga sebelum pulang. Bahasa dibuat sederhana agar bisa dibaca bersama.</p></div>' +
       '<dl class="sheet-meta-grid">' +
         '<div><dt>Pasien</dt><dd>' + e(p.kode) + ' · ' + p.usia + ' tahun</dd></div>' +
@@ -884,7 +884,7 @@
   V.keluarga = function (token) {
     const res = S.familyByToken(token);
     if (!res.valid) {
-      return '<section class="page"><div class="card"><div class="empty-state"><div class="empty-icon">' + icon('lock') + '</div><h2>Tautan tidak dapat dibuka</h2><p>' + e(res.reason) + ' Minta tautan baru kepada petugas perencana pemulangan.</p><a class="btn btn-secondary" href="#/pasien">Kembali</a></div></div></section>';
+      return '<section class="page"><div class="card"><div class="empty-state"><div class="empty-icon">' + icon('lock') + '</div><h1>Tautan tidak dapat dibuka</h1><p>' + e(res.reason) + ' Minta tautan baru kepada petugas perencana pemulangan.</p><a class="btn btn-secondary" href="#/pasien">Kembali</a></div></div></section>';
     }
     const r = S.hasil(res.link.pasienId);
     if (!r) return V.notFound('Data tidak ditemukan.');
@@ -1062,7 +1062,7 @@
         '<p class="lede">Ambang dan katalog opsi berada di satu tempat agar bisa ditinjau bersama tim layanan. Perubahan berlaku untuk semua pemetaan.</p></div>' +
         '<div class="page-actions"><span class="badge badge-neutral">' + icon('lock') + (canEdit ? 'Anda dapat mengubah' : 'Hanya admin layanan') + '</span></div></div>' +
 
-      (!canEdit ? '<div class="notice notice-info">' + icon('info') + '<div>Anda dapat melihat konfigurasi. Untuk mengubah ambang, masuk sebagai <strong>Admin layanan</strong> melalui menu peran di kanan atas (mode demo).</div></div>' : '') +
+      (!canEdit ? '<div class="notice notice-info">' + icon('info') + '<div>Anda dapat melihat konfigurasi. Untuk mengubah ambang, masuk sebagai <b>Admin layanan</b> melalui menu peran di kanan atas (mode demo).</div></div>' : '') +
 
       '<div class="settings-grid">' +
         '<div class="stack-4">' +
@@ -1130,7 +1130,7 @@
   };
 
   V.notFound = function (message, href) {
-    return '<section class="page"><div class="card"><div class="empty-state"><div class="empty-icon">' + icon('info') + '</div><h2>Tidak ditemukan</h2><p>' + e(message || 'Halaman tidak tersedia.') + '</p>' +
+    return '<section class="page"><div class="card"><div class="empty-state"><div class="empty-icon">' + icon('info') + '</div><h1>Tidak ditemukan</h1><p>' + e(message || 'Halaman tidak tersedia.') + '</p>' +
       '<a class="btn btn-secondary" href="' + (href || '#/pasien') + '">Kembali</a></div></div></section>';
   };
 
