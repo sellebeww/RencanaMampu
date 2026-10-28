@@ -82,7 +82,7 @@ Pasien yang menarik untuk dicoba: **RM-077** (konflik terbanyak), **RM-014** (ko
 | Perintah | Fungsi |
 |---|---|
 | `npm run dev` | Server dev dengan hot reload |
-| `npm test` | 35 uji mesin aturan (Vitest) |
+| `npm test` | 35 kasus uji mesin aturan (Vitest) |
 | `npm run typecheck` | `tsc --strict`, tanpa emit |
 | `npm run build` | Typecheck + build statis ke `dist/` (bisa di-host di subfolder mana pun) |
 | `npm run preview` | Sajikan `dist/` secara lokal |
@@ -125,12 +125,13 @@ TypeScript (strict) tanpa framework UI, dibangun dengan Vite dan diuji dengan Vi
 ```
 index.html          aplikasi (router hash)          src/app.ts        router, event, validasi formulir
 profil.html         profil produk / landing         src/views.ts      semua tampilan
-styles.css          design system + gaya cetak      src/rules.ts      mesin aturan + format angka/tanggal
+styles.css          design system + gaya cetak      src/rules.ts      mesin aturan
+profil.css          gaya halaman profil             src/rules.cases.ts, rules.test.ts   35 kasus uji
 tests.html          uji aturan di peramban          src/config.ts     ambang + katalog opsi
 docs/schema.sql     usulan skema PostgreSQL         src/store.ts      penyimpanan, audit, consent, tautan keluarga
 docs/privasi.md     privasi & batas kepatuhan       src/data.ts       10 keluarga + 12 templat
 docs/pilot.md       protokol pilot & metrik         src/types.ts      tipe domain
-docs/audit/         laporan audit + skrip verifikasi
+docs/audit/         laporan audit, model ancaman, keputusan, skrip verifikasi
 ```
 
 ## Aksesibilitas & keamanan

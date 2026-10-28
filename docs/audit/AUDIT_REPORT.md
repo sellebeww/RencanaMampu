@@ -22,7 +22,7 @@ Tidak diubah, selain tambahan `docs/audit/`. Struktur sudah sesuai README dan se
 index.html  tests.html  styles.css  rules-config.js  .gitignore (baru)
 js/        app.js data.js rules.js rules.test.js store.js views.js
 docs/      privasi.md schema.sql
-docs/audit/ AUDIT_REPORT.md MANUAL_ACTIONS.md DECISIONS.md PROGRESS.md THREAT_MODEL.md ROLLBACK.md verify/
+docs/audit/ AUDIT_REPORT.md MANUAL_ACTIONS.md DECISIONS.md THREAT_MODEL.md verify/
 ```
 
 ## 5. Standar penamaan
@@ -88,4 +88,4 @@ Catatan metodologi: perbandingan piksel screenshot terbukti tidak andal di sini 
 6. Saran lanjutan (di luar lingkup, tidak dikerjakan): pindahkan atribut `style=""` di template ke kelas CSS agar CSP bisa tanpa `'unsafe-inline'`; tambahkan CI ringan yang menjalankan `docs/audit/verify/check.js` + `axe.js`.
 
 ## 11. Cara membatalkan
-Lihat `ROLLBACK.md`. Singkatnya: `git switch main` mengembalikan kondisi asli; `git revert <commit>` membatalkan satu tahap.
+Gunakan `git revert <commit>` untuk membatalkan satu tahap.
