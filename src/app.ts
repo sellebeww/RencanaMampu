@@ -605,6 +605,8 @@ function onChange(ev: Event) {
     if (isRole(t.value)) S.setRole(t.value);
     ui.lastKey = null;
     render();
+    // Peran hanya mengubah izin di halaman tertentu; beri umpan balik agar pergantian terasa.
+    toast('Peran aktif: ' + S.state.role + '.');
     return;
   }
   if (t.dataset && t.dataset.action === 'toggle-opsi') {
